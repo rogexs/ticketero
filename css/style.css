@@ -1,0 +1,11 @@
+/*Fuentes*/
+@font-face{
+    font-family: 'Nokio';
+    src: url(../font/NokioMedium.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+.nokio{
+    font-family: 'Nokio';
+}
