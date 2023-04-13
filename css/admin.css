@@ -6,7 +6,7 @@ body {
 /*Fuentes*/
 @font-face {
     font-family: 'Nokio';
-    src: url(../font/NokioMedium.ttf);
+    src: url(/assets/font/NokioMedium.ttf);
     font-weight: normal;
     font-style: normal;
 }
