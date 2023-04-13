@@ -58,6 +58,7 @@ body {
 /*Seccion login*/
 .login-div {
     margin-top: 50px;
+    margin-bottom: 50px;
     max-width: 400px;
     border: solid 3.5px #df923a;
     box-sizing: border-box;

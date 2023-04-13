@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ticketero - Registrarse</title>
+  <title>Ticketero</title>
   <!--Iconos de pestaña-->
   <link rel="icon" type="image/x-com" href="../assets/img/ticketero.jpg">
   <!--Boostrap Iconos CSS-->
@@ -36,34 +36,12 @@
 
   <!--Seccion login-->
   <section class="align-items-stretch">
-    <div class="container-fluid login-div">
-      <h2 class="login-titulo text-lg text-center">Registrarse</h2>
-      <form class="align-items-center" action="confirmacion-registro.html">
-        <label for="email" class="login-titulo-form">Correo electrónico:</label>
-        <br>
-        <input class="text-form" type="email" id="email" name="email" required>
-        <br>
-        <label for="nombre" class="login-titulo-form">Nombre:</label>
-        <br>
-        <input class="text-form" id="nombre" name="nombre" required>
-        <br>
-        <label for="apellido" class="login-titulo-form">Apellido:</label>
-        <br>
-        <input class="text-form" id="apellido" name="apellido" required>
-        <br>
-        <label class="login-titulo-form" for="password">Contraseña:</label>
-        <br>
-        <input class="text-form" id="password" name="password" required>
-        <br>
-        <label class="login-titulo-form" for="password">Confirmar contraseña:</label>
-        <br>
-        <input class="text-form" id="password" name="password" required>
-        <div class="d-grid gap-2">
-          <input class="btn btn-primary" type="submit" value="Registrar Usuario"><!--Llevar a confirmacion registro-->
+    <div class="container-fluid login-div text-center">
+      <h2 class="login-titulo text-lg">Proceso de registro</h2>
+        <label class="login-titulo-form">El proceso de registro ha sido finalizado, se ha enviado una solicitud de confirmacion a su correo electrónico.Favor de confirmar dicho correo electrónico.</label>
+        <div class="d-grid gap-2" style="margin: 10px;">
+          <a href="/index.html" class="btn btn-primary" style="margin-bottom: 5px;">Finalizar proceso</a>
         </div>
-      </form>
-      <hr class="hr-color">
-      <p style="margin-bottom: 2.5px; text-align: center;" class="montserrat-blanco text-center">¿Ya tiene una cuenta? <a class="montserrat-amarillo" href="/views/login.html">Inicie Sesion</a></p>
     </div>
   </section>
 
