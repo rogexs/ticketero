@@ -71,14 +71,12 @@ body {
     flex-shrink: 1;
 }
 
-/*
-
-    margin: 70px auto;
-    
-    border: 4px solid #DF923A;
-    color: #ccc;
-    border-radius: 5px;
+.login-titulo{
     text-align: center;
-    background-color: #0A6D94;
-    font-family: 'Montserrat', sans-serif;
-*/
+    font-size: 6.4rem;
+    font-weight: 400;
+    line-height: 1.2575;
+    color: #ffffff;
+    font-family:'Nokio', 'Source Sans Pro';
+    white-space: nowrap;
+}
