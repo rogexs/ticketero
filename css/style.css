@@ -17,8 +17,8 @@ body {
 
 /*Logo*/
 .format-logo {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     align-items: center;
 }
 
@@ -26,7 +26,7 @@ body {
     width: 60px;
     height: 60px;
     background-color: white;
-    border: 3px solid #DF923A;
+    border: 2px solid #DF923A;
     border-radius: 55%;
     box-sizing: border-box;
     box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
@@ -34,7 +34,6 @@ body {
 
 /*Barra de navegacion*/
 .navbar {
-    padding: 2rem;
     background-color: #0A6D94;
     height: 80px;
     text-align: left;
@@ -42,41 +41,93 @@ body {
     box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
 }
 
-.titulo-nav{
-        margin-left: 70px;
-        margin-top: 10px;
-        position: absolute;
-        text-align: center;
-        font-size: 2.5rem;
-        font-weight: 500;
-        line-height: 1.2575;
-        color: #ffffff;
-        font-family: 'Nokio', 'Source Sans Pro';
-        white-space: nowrap;
-        flex-shrink: 0;
+.titulo-nav {
+    margin-left: 70px;
+    margin-top: 10px;
+    position: absolute;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2575;
+    color: #ffffff;
+    font-family: 'Nokio', 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /*Seccion login*/
-.login-div{
-    text-align: center;
-    padding: 50px 20px 150px 20px;
+.login-div {
     margin-top: 50px;
-    max-width: 800px;
-    position: relative;
-    border: solid 5px #df923a;
+    max-width: 400px;
+    border: solid 3.5px #df923a;
     box-sizing: border-box;
     box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
     background-color: #0a6d94;
-    border-radius: 2.5rem 0 2.5rem 0;
+    border-radius: 1.5rem 0 1.5rem 0;
     flex-shrink: 1;
 }
 
-.login-titulo{
+.login-titulo {
+    margin-top: 20px;
     text-align: center;
-    font-size: 6.4rem;
+    font-size: 2.5rem;
     font-weight: 400;
     line-height: 1.2575;
     color: #ffffff;
-    font-family:'Nokio', 'Source Sans Pro';
+    font-family: 'Nokio', 'Source Sans Pro';
     white-space: nowrap;
+}
+
+.login-titulo-form {
+    color: #ffffff;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.text-form{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #DF923A;
+    font-family: 'Nokio';
+    font-weight: 400;
+    font-size: 1.25rem;
+    border: 0px;
+}
+
+.btn-primary:hover {
+    background-color: #945819;
+}
+
+.hr-color {
+    background-color: #ffffff;
+    border: none;
+    border-top: 2px solid #ccc;
+    margin-top: 1rem;
+    margin-bottom: 5px;
+}
+
+.montserrat-blanco {
+    font-family: 'Montserrat';
+    font-style: italic;
+    color: #ffffff;
+    font-weight: 300;
+}
+.montserrat-amarillo {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 500;
+    line-height: 30px;
+    color: #DF923A;
+}
+
+.montserrat-amarillo:hover {
+    color: #945819;
 }
