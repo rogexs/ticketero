@@ -7,10 +7,7 @@ const txtContra = document.getElementById("contra");
 const txtContraCon = document.getElementById("con-contra");
 const btnRegistrar = document.getElementById("registrar");
 
-btnRegistrar.addEventListener('click', registrar, function (event) {
-    event.preventDefault();
-});
-
+btnRegistrar.addEventListener('click', registrar)
 
 async function registrar() {
     let supaCorreo = txtCorreo.value;
@@ -25,7 +22,6 @@ async function registrar() {
             .from('usuario')
             .insert([{ correo: supaCorreo, nombre: supaNombre, apellido: supaApellido, contra: supaContra }])
 
-        alert('aiuda');
     } else {
         alert('error');
     }
