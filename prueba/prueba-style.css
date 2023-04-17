@@ -1,0 +1,48 @@
+/*Logo*/
+.format-logo {
+    width: 10px;
+    height: 10px;
+    align-items: center;
+}
+
+.formato-div-logo {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border: 2px solid #DF923A;
+    border-radius: 55%;
+    box-sizing: border-box;
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    color: #ffffff;
+    text-decoration:none;
+}
+
+.logo:hover{
+    color: #ffffff;
+}
+
+/*Barra de navegacion*/
+.navbar {
+    background-color: #0A6D94;
+    height: 80px;
+    text-align: left;
+    border-bottom: 5px solid #DF923A;
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+}
+
+.titulo-nav {
+    margin-left: 70px;
+    margin-top: 10px;
+    position: absolute;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2575;
+    color: #ffffff;
+    font-family: 'Nokio', 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
+}
