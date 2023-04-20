@@ -16,12 +16,9 @@ async function iniciarSesion() {
         
     })
      if (error) {
-        alert('funciona')
-        window.location.href = 'https://www.google.com';
+        alert('Inicio de sesion incorrecto')
      }else{
         alert('Inicio correcto');
-        window.location.href = 'https://www.youtube.com/';
+        window.location.href = '/admin/index-admin.html';
      }
-
-     console.log(error);
 }
