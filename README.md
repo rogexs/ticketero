@@ -1,2 +1,4 @@
 # Proyecto-Ticketero
-Implementado el caso de uso de registro e inicio de sesion.
+Implementados los casos de uso:
+ -Registro
+ -Inicio de sesion.

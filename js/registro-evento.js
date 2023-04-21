@@ -19,29 +19,27 @@ const btnRegistrar = document.getElementById("registrar");
 btnRegistrar.addEventListener('click', registrarEvento)
 
 async function registrarEvento() {
-    let nombre = txtNombre.value;
-    let tipo = txtTipo.value;
-    let fecha = txtFecha.value;
-    let horario_inicio = txtHorario.value;
-    let ciudad = txtCiudad.value;
-    let direccion = txtDireccion.value;
-    let organizador = txtOrganizador.value;
-    let cantidad_invitados = txtCantidadInvitados.value;
-    let fecha_limite = txtFechaLimite.value;
-    let precio_boleto = txtPrecioBoleto.value;
-    let costo_extra = txtCostoExtra.value;
-    let publico_privado = txtPublicoPrivado.value;
-    let descripcion = txtDescripcion.value;
+   let nombre = txtNombre.value;
+   let tipo = txtTipo.value;
+   let fecha = txtFecha.value;
+   let horario_inicio = txtHorario.value;
+   let ciudad = txtCiudad.value;
+   let direccion = txtDireccion.value;
+   let organizador = txtOrganizador.value;
+   let cantidad_invitados = txtCantidadInvitados.value;
+   let fecha_limite = txtFechaLimite.value;
+   let precio_boleto = txtPrecioBoleto.value;
+   let costo_extra = txtCostoExtra.value;
+   let publico_privado = txtPublicoPrivado.value;
+   let descripcion = txtDescripcion.value;
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-        email: correo,
-        password: contra,
-        
-    })
-     if (error) {
-        alert('Inicio de sesion incorrecto')
-     }else{
-        alert('Inicio correcto');
-        window.location.href = '/admin/index-admin.html';
-     }
+   const { error } = await supabase
+      .from('eventos')
+      .insert({ nombre:'convencion', tipo:'convencion', fecha, horario_inicio, ciudad, direccion, organizador, cantidad_invitados, fecha_limite , precio_boleto, costo_extra, publico_privado, descripcion })
+
+   if (error) {
+      alert('Registro evento incorrecto')
+   } else {
+      alert('Registro evento correcto');
+   }
 }
