@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de evento</title>
+    <!--Supabase-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="/js/registro-evento.js"></script>
+</head>
+<body>
+    <form style="text-align: center;">
+        <h1>Registro de evento</h1>
+        <label for="correo" >Nombre del evento:</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del evento">
+        <br>
+        <label for="contra">Tipo del evento:</label>
+        <input type="text" name="tipo" id="tipo" placeholder="Ingrese el tipo del evento">
+        <br>
+        <label for="contra">Fecha:</label>
+        <input type="date" name="fecha" id="fecha" placeholder="Ingrese la fecha del evento">
+        <br>
+        <label for="contra">Horario de inicio</label>
+        <input type="time" name="horio" id="horario" placeholder="Ingrese el horario del evento">
+        <br>
+        <label for="contra">Ciudad:</label>
+        <input type="text" name="ciudad" id="ciudad" placeholder="Ingrese la ciudad del evento">
+        <br>
+        <label for="contra">Direccion:</label>
+        <input type="text" name="direccion" id="direccion" placeholder="Ingrese la direccion del evento">
+        <br>
+        <label for="contra">Organizador:</label>
+        <input type="text" name="organizador" id="organizador" placeholder="Ingrese el nombre del organizador">
+        <br>
+        <label for="contra">Cantidad de invitados:</label>
+        <input type="text" name="cantidad-invitados" id="cantidad-invitados" placeholder="Ingrese la cantidad de invitados">
+        <br>
+        <label for="contra">Fecha limite de venta:</label>
+        <input type="text" name="fecha-limite" id="fecha-limite" placeholder="Ingrese la fecha del evento">
+        <br>
+        <label for="contra">Precio:</label>
+        <input type="text" name="precio-boleto" id="precio-boleto" placeholder="Ingrese el precio del evento">
+        <br>
+        <label for="contra">Costo extra:</label>
+        <input type="text" name="costo-extra" id="costo-extra" placeholder="Ingrese el costo extra del evento">
+        <br>
+        <label for="contra">Evento publico o privado:</label>
+        <input type="text" name="public-privado" id="public-privado" placeholder="Ingrese el tipo del evento">
+        <br>
+        <label for="contra">Descripcion del evento:</label>
+        <input type="text" name="descripcion" id="descripcion" placeholder="Ingrese la descripcion del evento">
+        <br>
+        <input type="submit" id="registrar" value="Registrar evento">
+    </form>
+</body>
+</html>
