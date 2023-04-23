@@ -15,6 +15,7 @@ async function registrar() {
   let apellido = txtApellido.value;
   let contra = txtContra.value;
   let conContra = txtContraCon.value;
+  let id_usuario_auth;
 
   if (contra == contra && conContra.length > 0) {
 
@@ -23,9 +24,11 @@ async function registrar() {
       password: contra,
     })
 
+    id_usuario_auth = data.user.id;
+
     const { error } = await supabase
       .from('usuarios')
-      .insert({ correo, nombre, apellido, contra })
+      .insert({ id_usuario_auth, correo, nombre, apellido, contra })
 
     alert('Registro exitoso');
 

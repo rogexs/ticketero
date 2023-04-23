@@ -6,12 +6,7 @@ btnCerrar.addEventListener('click', cerrarSesion)
 
 async function cerrarSesion() {
 
-    const { error } = await supabase.auth.signOut()
+   const { data: { user } } = await supabase.auth.getUser()
 
-     if (error) {
-        alert('Cierre de sesion incorrecto')
-     }else{
-        alert('Cierre de sesion correcto');
-        window.location.href = '/index.html';
-     }
+   console.log(user.id);
 }
