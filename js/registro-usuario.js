@@ -18,14 +18,14 @@ async function registrar() {
 
   if (contra == contra && conContra.length > 0) {
 
-    const { error } = await supabase
-      .from('usuarios')
-      .insert({ correo, nombre, apellido, contra })
-
     const { data, error2 } = await supabase.auth.signUp({
       email: correo,
       password: contra,
     })
+
+    const { error } = await supabase
+      .from('usuarios')
+      .insert({ correo, nombre, apellido, contra })
 
     alert('Registro exitoso');
 
