@@ -34,10 +34,14 @@ async function registrarEvento() {
    let costo_extra = txtCostoExtra.value;
    let publico_privado = txtPublicoPrivado.value;
    let descripcion = txtDescripcion.value;
+   let id_usuario_auth;
+
+   const { data: { user } } = await supabase.auth.getUser()
+   id_usuario_auth = user.id;
 
    const { error } = await supabase
       .from('eventos')
-      .insert({ nombre, tipo, fecha, horario_inicio, horario_final, ciudad, direccion, organizador, cantidad_invitados, fecha_limite, precio_boleto, costo_extra, publico_privado, descripcion })
+      .insert({ id_usuario_auth, nombre, tipo, fecha, horario_inicio, horario_final, ciudad, direccion, organizador, cantidad_invitados, fecha_limite, precio_boleto, costo_extra, publico_privado, descripcion })
 
    if (error) {
       alert('Registro evento incorrecto')
