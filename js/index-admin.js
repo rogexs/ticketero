@@ -1,32 +1,26 @@
 import { supabase } from "./conexion.js"
 
-const btnAccion = document.getElementById("accion");
+let { data: { user } } = await supabase.auth.getUser()
+console.log(user.id);
 
-btnAccion.addEventListener('click', accionFuncion)
+let { data, error } = await supabase
+    .from('eventos')
+    .select(`count`)
+    .eq('id_usuario_auth', user.id)
 
-async function accionFuncion() {
+console.log(data[0].count);
+let limite = data[0].count;
 
-    let { data: { user } } = await supabase.auth.getUser()
-    console.log(user.id);
-    
-    let { data, error } = await supabase
-        .from('eventos')
-        .select(`count`)
-        .eq('id_usuario_auth', user.id)
+({ data, error } = await supabase
+    .from('eventos')
+    .select()
+    .eq('id_usuario_auth', 'a35419a1-7ce1-4182-ae46-23168d30d6d6'))
 
-    console.log(data[0].count);
-    let limite = data[0].count;
+console.log(data[0]);
 
-    ({ data, error } = await supabase
-        .from('eventos')
-        .select()
-        .eq('id_usuario_auth', 'a35419a1-7ce1-4182-ae46-23168d30d6d6'))
+for (let index = 0; index < limite; index++) {
 
-    console.log(data[0]);
-
-    for (let index = 0; index < limite; index++) {
-
-        var nuevoDiv = document.createElement("div");
+    var nuevoDiv = document.createElement("div");
 
     // Establecer el estilo del nuevo div
     nuevoDiv.setAttribute("style", "border: 1rem solid goldenrod;");
@@ -37,19 +31,19 @@ async function accionFuncion() {
     nombreEvento.appendChild(textoNombreEvento);
 
     var fecha = document.createElement("p");
-    var textoFecha = document.createTextNode("Fecha: "+data[index].fecha);
+    var textoFecha = document.createTextNode("Fecha: " + data[index].fecha);
     fecha.appendChild(textoFecha);
 
     var entrada = document.createElement("p");
-    var textoEntrada = document.createTextNode("Entrada: "+data[index].precio_boleto);
+    var textoEntrada = document.createTextNode("Entrada: " + data[index].precio_boleto);
     entrada.appendChild(textoEntrada);
 
     var estado = document.createElement("p");
-    var textoEstado = document.createTextNode("Estado: "+data[index].estado);
+    var textoEstado = document.createTextNode("Estado: " + data[index].estado);
     estado.appendChild(textoEstado);
 
     var tipoEvento = document.createElement("p");
-    var textoTipoEvento = document.createTextNode("Tipo de evento: "+data[index].publico_privado);
+    var textoTipoEvento = document.createTextNode("Tipo de evento: " + data[index].publico_privado);
     tipoEvento.appendChild(textoTipoEvento);
 
     // Agregar los elementos <p> al nuevo div
@@ -62,7 +56,5 @@ async function accionFuncion() {
     // Agregar el nuevo div al contenedor
     var contenedor = document.getElementById("contenedor");
     contenedor.appendChild(nuevoDiv);
-
-    }
 
 }
