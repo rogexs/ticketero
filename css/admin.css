@@ -42,9 +42,8 @@ body {
 }
 
 /*Barra de navegacion*/
-.navbar {
+.navbar1 {
     background-color: #0A6D94;
-    height: 80px;
     text-align: left;
     border-bottom: 5px solid #DF923A;
     box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
@@ -78,4 +77,56 @@ body {
 
 .nav-link:hover{
     color: #DF923A;
+}
+
+.admin {
+    color: white;
+    font-family: 'Montserrat';
+    size: 2rem;
+    font-weight: 500;
+    line-height: 1.2575;
+}
+
+
+
+  .experiencia {
+    padding: 40px;
+  }
+
+  .experiencia .row div {
+    margin-bottom: 10px;
+  }
+ 
+.navbar-nav li a {
+    height: 80px;
+    
+}
+.cargar-imagen,
+.enviar {
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    font-size: 20px;
+    background-color: #DF923A;
+    border: 2px solid #945819;
+    color: white;
+}
+
+.fuente {
+    font-family: 'Montserrat';
+}
+
+.titulo {
+    font-size: 30px;
+    color: white;
+    background-color: #DF923A;
+    border-radius: 10px;
+    border: 2px solid #945819;
+}
+
+.agregar {
+    font-size: 15px;
+    background-color: #DF923A;
+    border: 2px solid #945819;
+    color: white;
+    margin-bottom: 20px;
 }
