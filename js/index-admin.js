@@ -22,39 +22,52 @@ for (let index = 0; index < limite; index++) {
 
     var nuevoDiv = document.createElement("div");
 
-    // Establecer el estilo del nuevo div
-    nuevoDiv.setAttribute("style", "border: 1rem solid goldenrod;");
+  // Establecer el estilo del nuevo div
+  nuevoDiv.setAttribute("style", "border: 1rem solid goldenrod;");
 
-    // Composicion del div
-    var nombreEvento = document.createElement("p");
-    var textoNombreEvento = document.createTextNode(data[index].nombre);
-    nombreEvento.appendChild(textoNombreEvento);
+  // Crear los elementos <p> y establecer su contenido
+  var nombreEvento = document.createElement("p");
+  var textoNombreEvento = document.createTextNode(data[index].nombre);
+  nombreEvento.appendChild(textoNombreEvento);
 
-    var fecha = document.createElement("p");
-    var textoFecha = document.createTextNode("Fecha: " + data[index].fecha);
-    fecha.appendChild(textoFecha);
+  var fecha = document.createElement("p");
+  var textoFecha = document.createTextNode("Fecha: " + data[index].fecha);
+  fecha.appendChild(textoFecha);
 
-    var entrada = document.createElement("p");
-    var textoEntrada = document.createTextNode("Entrada: " + data[index].precio_boleto);
-    entrada.appendChild(textoEntrada);
+  var entrada = document.createElement("p");
+  var textoEntrada = document.createTextNode("Entrada: " + data[index].precio_boleto);
+  entrada.appendChild(textoEntrada);
 
-    var estado = document.createElement("p");
-    var textoEstado = document.createTextNode("Estado: " + data[index].estado);
-    estado.appendChild(textoEstado);
+  var estado = document.createElement("p");
+  var textoEstado = document.createTextNode("Estado: " + data[index].estado);
+  estado.appendChild(textoEstado);
 
-    var tipoEvento = document.createElement("p");
-    var textoTipoEvento = document.createTextNode("Tipo de evento: " + data[index].publico_privado);
-    tipoEvento.appendChild(textoTipoEvento);
+  var tipoEvento = document.createElement("p");
+  var textoTipoEvento = document.createTextNode("Tipo de evento: " + data[index].publico_privado);
+  tipoEvento.appendChild(textoTipoEvento);
 
-    // Agregar los elementos <p> al nuevo div
-    nuevoDiv.appendChild(nombreEvento);
-    nuevoDiv.appendChild(fecha);
-    nuevoDiv.appendChild(entrada);
-    nuevoDiv.appendChild(estado);
-    nuevoDiv.appendChild(tipoEvento);
+  // Crear el elemento <a> y establecer su contenido
+  var verEvento = document.createElement("a");
+  verEvento.setAttribute("href", "/admin/ver-evento.html");
 
-    // Agregar el nuevo div al contenedor
-    var contenedor = document.getElementById("contenedor");
-    contenedor.appendChild(nuevoDiv);
+  // Crear el botón y establecer su contenido
+  var botonVerEvento = document.createElement("button");
+  var textoBotonVerEvento = document.createTextNode("Ver evento");
+  botonVerEvento.appendChild(textoBotonVerEvento);
+
+  // Agregar el botón al elemento <a>
+  verEvento.appendChild(botonVerEvento);
+
+  // Agregar los elementos <p> y <a> al nuevo div
+  nuevoDiv.appendChild(nombreEvento);
+  nuevoDiv.appendChild(fecha);
+  nuevoDiv.appendChild(entrada);
+  nuevoDiv.appendChild(estado);
+  nuevoDiv.appendChild(tipoEvento);
+  nuevoDiv.appendChild(verEvento);
+
+  // Agregar el nuevo div al contenedor
+  var contenedor = document.getElementById("contenedor");
+  contenedor.appendChild(nuevoDiv);
 
 }
