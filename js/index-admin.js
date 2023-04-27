@@ -1,14 +1,12 @@
 import { supabase } from "./conexion.js"
 
 let { data: { user } } = await supabase.auth.getUser()
-console.log(user.id);
 
 let { data, error } = await supabase
     .from('eventos')
     .select(`count`)
     .eq('id_usuario_auth', user.id)
 
-console.log(data[0].count);
 let limite = data[0].count;
 
 ({ data, error } = await supabase
@@ -16,58 +14,54 @@ let limite = data[0].count;
     .select()
     .eq('id_usuario_auth', 'a35419a1-7ce1-4182-ae46-23168d30d6d6'))
 
-console.log(data[0]);
-
 for (let index = 0; index < limite; index++) {
 
-    var nuevoDiv = document.createElement("div");
+    sessionStorage.setItem("dato " + index, "El id de evento es: " + data[index].id_eventos);
 
-  // Establecer el estilo del nuevo div
-  nuevoDiv.setAttribute("style", "border: 1rem solid goldenrod;");
+    // Crear el div
+    var div = document.createElement("div");
 
-  // Crear los elementos <p> y establecer su contenido
-  var nombreEvento = document.createElement("p");
-  var textoNombreEvento = document.createTextNode(data[index].nombre);
-  nombreEvento.appendChild(textoNombreEvento);
+    // Establecer el estilo del div
+    div.style.border = "1rem solid goldenrod";
 
-  var fecha = document.createElement("p");
-  var textoFecha = document.createTextNode("Fecha: " + data[index].fecha);
-  fecha.appendChild(textoFecha);
+    // Crear y agregar el elemento de texto del primer párrafo
+    var nombreEvento = document.createElement("p");
+    nombreEvento.textContent = "Nombre de evento";
+    div.appendChild(nombreEvento);
 
-  var entrada = document.createElement("p");
-  var textoEntrada = document.createTextNode("Entrada: " + data[index].precio_boleto);
-  entrada.appendChild(textoEntrada);
+    // Crear y agregar el elemento de texto del segundo párrafo
+    var fechaEvento = document.createElement("p");
+    fechaEvento.textContent = "Fecha: xx/xx/xxxx";
+    div.appendChild(fechaEvento);
 
-  var estado = document.createElement("p");
-  var textoEstado = document.createTextNode("Estado: " + data[index].estado);
-  estado.appendChild(textoEstado);
+    // Crear y agregar el elemento de texto del tercer párrafo
+    var entradaEvento = document.createElement("p");
+    entradaEvento.textContent = "Entrada: $$$$$";
+    div.appendChild(entradaEvento);
 
-  var tipoEvento = document.createElement("p");
-  var textoTipoEvento = document.createTextNode("Tipo de evento: " + data[index].publico_privado);
-  tipoEvento.appendChild(textoTipoEvento);
+    // Crear y agregar el elemento de texto del cuarto párrafo
+    var estadoEvento = document.createElement("p");
+    estadoEvento.textContent = "Estado: xxxxxxx";
+    div.appendChild(estadoEvento);
 
-  // Crear el elemento <a> y establecer su contenido
-  var verEvento = document.createElement("a");
-  verEvento.setAttribute("href", "/admin/ver-evento.html");
+    // Crear y agregar el elemento de texto del quinto párrafo
+    var tipoEvento = document.createElement("p");
+    tipoEvento.textContent = "Tipo de evento: xxxxxxx";
+    div.appendChild(tipoEvento);
 
-  // Crear el botón y establecer su contenido
-  var botonVerEvento = document.createElement("button");
-  var textoBotonVerEvento = document.createTextNode("Ver evento");
-  botonVerEvento.appendChild(textoBotonVerEvento);
+    // Crear y agregar el enlace
+    var enlaceEvento = document.createElement("a");
+    enlaceEvento.href = "/admin/ver-evento.html";
+    div.appendChild(enlaceEvento);
 
-  // Agregar el botón al elemento <a>
-  verEvento.appendChild(botonVerEvento);
+    // Crear y agregar el botón dentro del enlace
+    var botonEvento = document.createElement("button");
+    botonEvento.id = index;
+    botonEvento.value = index;
+    botonEvento.textContent = "Ver evento";
+    enlaceEvento.appendChild(botonEvento);
 
-  // Agregar los elementos <p> y <a> al nuevo div
-  nuevoDiv.appendChild(nombreEvento);
-  nuevoDiv.appendChild(fecha);
-  nuevoDiv.appendChild(entrada);
-  nuevoDiv.appendChild(estado);
-  nuevoDiv.appendChild(tipoEvento);
-  nuevoDiv.appendChild(verEvento);
-
-  // Agregar el nuevo div al contenedor
-  var contenedor = document.getElementById("contenedor");
-  contenedor.appendChild(nuevoDiv);
-
+    // Agregar el nuevo div al contenedor
+    var contenedor = document.getElementById("contenedor");
+    contenedor.appendChild(div);
 }
