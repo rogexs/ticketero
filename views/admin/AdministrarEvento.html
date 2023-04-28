@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Formulario de dos columnas con Bootstrap</title>
+	<title>Administración de eventos</title>
 	<!-- Enlaza los archivos CSS de Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	  <!--Iconos de pestaña-->
@@ -93,7 +93,7 @@
                             <ul class="dropdown-menu" style="background-color: #945819;">
                                 <li><a class="dropdown-item" href="#" style="color: white;">Ver datos de evento</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#" style="color: white;">Editar evento</a></li>
+                                <li><a class="dropdown-item" href="/views/admin/editarEvento.html" style="color: white;">Editar evento</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#" style="color: white;" data-bs-toggle="modal" data-bs-target="#desplegarModal">Desplegar evento</a></li>
                                 <li><hr class="dropdown-divider"></li>
@@ -112,7 +112,7 @@
 						  <div class="mb-3 row">
 							<label for="staticEvent" class="col-sm-5 col-form-label"><strong>Estado:</strong></label>
 							<div class="col-sm-6">
-							  <input type="text" readonly class="form-control-plaintext" id="staticEvent" value="Sin desplegar">
+							  <input type="text" readonly class="form-control-plaintext" id="staticEvent" value="Sin desplegar" style="color: red;">
 							</div>
 						  </div>
 
@@ -205,30 +205,7 @@
 				<div class="col-md-6">
 
 					<!--Seleccionar imagen-->
-					<div>
-						<label for="formFileLg" class="form-label nokio" style="font-size: 20px;"><strong>Selecciona una imagen para tu evento</strong></label>
-						<input class="form-control form-control-lg cargar-imagen nokio" id="seleccionador-de-imagen" type="file">
-					</div>
-					<button type="button" class="btn enviar nokio" id="boton-cargar">Mostrar imagen</button>
-					<br />
-					<br />
-					<img src="" class="img-fluid" alt="Mi imagen" id="mi-imagen">
-					<script>
-					const seleccionadorDeImagen = document.getElementById("seleccionador-de-imagen");
-					const botonCargar = document.getElementById("boton-cargar");
-					const miImagen = document.getElementById("mi-imagen");
-				
-					botonCargar.addEventListener("click", () => {
-						const archivo = seleccionadorDeImagen.files[0];
-						const lectorDeArchivo = new FileReader();
-				
-						lectorDeArchivo.readAsDataURL(archivo);
-				
-						lectorDeArchivo.addEventListener("load", () => {
-						miImagen.src = lectorDeArchivo.result;
-						});
-					});
-					</script>
+					<img  class="img-fluid"  src="/assets/img/comic-con.jpg" alt="">
 
                     <!--Tabla-->
                     <table class="table table-hover">

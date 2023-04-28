@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Administrador</title>
+    <title>Comprador de boletos</title>
   <!-- Enlaza los archivos CSS de Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <!--Iconos de pestaña-->
@@ -27,7 +27,7 @@
 
 <body>
   
-
+<!--Header nav-->
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid navbar navbar1">
       <div class="container-fluid">
@@ -36,7 +36,7 @@
             <img src="/assets/img/logo-ticket.png" alt="Logo de la pagina" width="38px">
           </a>
         </div>
-        <h1 class="titulo-nav"><a href="/views/admin/Admin-home.html" class="logo">Ticketero</a></h1>
+        <h1 class="titulo-nav"><a href="/views/comprador/comprador-home.html" class="logo">Ticketero</a></h1>
         
         <button class="navbar-toggler justify-content-center" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -54,10 +54,7 @@
             <a class="nav-link" href="#">Modo comprador</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Eventos creados</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Escanear QR</a>
+            <a class="nav-link" href="/views/comprador/misBoletos.html">Ver mis boletos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/views/login.html">Cerrar sesión</a>
@@ -73,15 +70,15 @@
 <div class="container text-center nokio titulo">
 	<div class="row">
 	  <div class="col">
-		Administrador
+		COMPRADOR DE BOLETOS
 	  </div>
 	</div>
   </div>
 
 
 <!--Buscador-->
-    <section class="experiencia"> 
-      <div class="container ">
+    <section class="buscador"> 
+      <div class="container">
         <div class="row">
           <!-- Buscador -->
           <div class="col-12 col-md-3">
@@ -103,10 +100,7 @@
                 </select>
             </div>	
           </div>
-          <!-- Agregar evento -->
-          <div class="col-12 col-md-5">
-            <a href="/views/admin/registrarEvento.html"><button type="button" class="btn btn-primary agregar nokio">Agregar evento +</button></a>
-          </div>
+          
         </div>
       </div>
     </section>
@@ -119,57 +113,51 @@
 
 
 <!--Prueba de cards-->
-  <section class="experiencia"> 
+  
     <div class="container text-center">
       <div class="row">
         <!-- prueba 1 -->
         <div class="col-12 col-md-4">
           <div class="card card-img-height" style="width: 18rem;">
-            <img src="/assets/img/anime-con.png" class="card-img-top" alt="...">
+            <img src="/assets/img/anime-con.png" class="card-img-top img-fluid" alt="...">
             <div class="card-body">
               <h5 class="card-title">ANIME-CON</h5>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Fecha: 18/07/2023</li>
                 <li class="list-group-item">Entrada: $110</li>
-                <li class="list-group-item">Estado: desplegado</li>
-                <li class="list-group-item">Tipo de evento: Privado</li>
+                <li class="list-group-item">Estado: Disponible</li>
               </ul>
-              <a href="/views/admin/AdministrarEventoDesplegado.html" class="btn btn-primary" >Ver Evento</a>
-              <a href="#" class="btn btn-danger"data-bs-toggle="modal" data-bs-target="#eliminarEvento" >Eliminar evento</a>
+              <a href="/views/comprador/evento.html" class="btn btn-primary" >Ver Evento</a>
             </div>
           </div>  
         </div>
         <!-- prueba 2 -->      
         <div class="col-12 col-md-4">
           <div class="card card-img-height" style="width: 18rem;">
-            <img src="/assets/img/comic-con.jpg" class="card-img-top" alt="...">
+            <img src="/assets/img/comic-con.jpg" class="card-img-top img-fluid" alt="...">
             <div class="card-body">
               <h5 class="card-title">ANIME-CON</h5>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Fecha: 18/07/2023</li>
                 <li class="list-group-item">Entrada: $110</li>
-                <li class="list-group-item">Estado: desplegado</li>
-                <li class="list-group-item">Tipo de evento: Privado</li>
+                <li class="list-group-item">Estado: Agotado</li>
               </ul>
-              <a href="/views/admin/AdministrarEventoDesplegado.html" class="btn btn-primary" >Ver Evento</a>
-              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarEvento">Eliminar evento</a>
+              <a href="/views/comprador/evento.html" class="btn btn-primary" >Ver Evento</a>
             </div>
           </div>  
         </div>
         <!-- prueba 3 -->
         <div class="col-12 col-md-4">
           <div class="card card-img-height" style="width: 18rem;">
-            <img src="/assets/img/e3.png" class="card-img-top" alt="...">
+            <img src="/assets/img/e3.png" class="card-img-top img-fluid" alt="...">
             <div class="card-body">
               <h5 class="card-title">ANIME-CON</h5>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Fecha: 18/07/2023</li>
                 <li class="list-group-item">Entrada: $110</li>
-                <li class="list-group-item">Estado: desplegado</li>
-                <li class="list-group-item">Tipo de evento: Privado</li>
+                <li class="list-group-item">Estado: Disponible</li>
               </ul>
-              <a href="/views/admin/AdministrarEventoDesplegado.html" class="btn btn-primary" >Ver Evento</a>
-              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarEvento">Eliminar evento</a>
+              <a href="/views/comprador/evento.html" class="btn btn-primary" >Ver Evento</a>
             </div>
           </div>  
         </div>
@@ -183,11 +171,10 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Fecha: 18/07/2023</li>
                 <li class="list-group-item">Entrada: $110</li>
-                <li class="list-group-item">Estado: Sin desplegar</li>
-                <li class="list-group-item">Tipo de evento: Privado</li>
+                <li class="list-group-item">Estado: Disponible</li>
+                
               </ul>
-              <a href="/views/admin/AdministrarEvento.html" class="btn btn-primary" >Ver Evento</a>
-              <a href="#" class="btn btn-danger"data-bs-toggle="modal" data-bs-target="#aceptarEliminarEventoModal" >Eliminar evento</a>
+              <a href="/views/comprador/evento.html" class="btn btn-primary" >Ver Evento</a>
             </div>
           </div>  
         </div>
@@ -200,11 +187,9 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Fecha: 18/07/2023</li>
                 <li class="list-group-item">Entrada: $110</li>
-                <li class="list-group-item">Estado: Sin desplegar</li>
-                <li class="list-group-item">Tipo de evento: Privado</li>
+                <li class="list-group-item">Estado: Disponible</li>
               </ul>
-              <a href="/views/admin/AdministrarEvento.html" class="btn btn-primary" >Ver Evento</a>
-              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#aceptarEliminarEventoModal">Eliminar evento</a>
+              <a href="/views/comprador/evento.html" class="btn btn-primary" >Ver Evento</a>
             </div>
           </div>  
         </div>
@@ -217,76 +202,15 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Fecha: 18/07/2023</li>
                 <li class="list-group-item">Entrada: $110</li>
-                <li class="list-group-item">Estado: Sin desplegar</li>
-                <li class="list-group-item">Tipo de evento: Privado</li>
+                <li class="list-group-item">Estado: Agotado</li>
               </ul>
-              <a href="/views/admin/AdministrarEvento.html" class="btn btn-primary" >Ver Evento</a>
-              <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#aceptarEliminarEventoModal">Eliminar evento</a>
+              <a href="/views/comprador/evento.html" class="btn btn-primary" >Ver Evento</a>
             </div>
           </div>  
         </div>
         
       </div>
     </div>
-  </section>
-
-  <!-- Modal Eliminar evento -->
-  <div class="modal fade" id="eliminarEvento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-      <h1 class="modal-title fs-5" id="exampleModalLabel">Cancelación de Evento</h1>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-        <label for="radioButtom">Indique la razón por la cual desea cancelar el Evento:</label>
-
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-						<label class="form-check-label" for="flexRadioDefault1">
-                            Incapacidad de encontrar una localización para el evento
-						</label>
-					  </div>
-					  <div class="form-check">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-						<label class="form-check-label" for="flexRadioDefault2">
-                            Incapacidad de encontrar una fecha para llevar a cabo el evento
-						</label>
-					  </div>
-          <p class="text-break">Si lo desea agregue una breve descripción del motivo de la cancelación</p>
-          <textarea class="form-control" id="mensaje" style="height: 200px;" required placeholder="Descripción opcional..."></textarea>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aceptarEliminarEventoModal" style="color: white; background-color: red; border: 2px solid #945819;">Confirmar</button>
-          </div>
-      </div>
-      
-    </div>
-    </div>
-  </div>
-
-    <!-- Modal Aceptar cancelación -->
-			<div class="modal fade" id="aceptarEliminarEventoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea el cancelar su Evento?</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-							<p class="text-break" style="color: gray;"><em>Esta acción es permanente y no se puede deshacer</em></p>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-								<button type="button" class="btn btn-primary" style="color: white; background-color: red; border: 2px solid #945819;">Confirmar</button>
-							</div>
-					</div>
-					
-				</div>
-				</div>
-			</div>
-
-
   
 
   <!--FOOTER-->

@@ -15,6 +15,10 @@ body {
     font-family: 'Nokio';
 }
 
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
 /*Logo*/
 .format-logo {
     width: 10px;
@@ -142,3 +146,16 @@ body {
 .montserrat-amarillo:hover {
     color: #945819;
 }
+
+.registro{
+    margin: 60px;
+    
+}
+
+.mensaje {
+    border: 3px solid #945819;
+    background-color: #DF923A;
+    border-radius: 10px;
+    
+}
+
