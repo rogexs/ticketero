@@ -1,7 +1,6 @@
-import { supabase } from "./conexion.js"
+//import { supabase } from "./conexion.js"
+//import botonLista from './index-admin.js';
 
-const dato = sessionStorage.getItem("dato ");
+//console.log(datoId);
 
-const txtCorreo = document.getElementById("correo");
-
-console.log(sessionStorage);
+//const dato = sessionStorage.getItem("dato ");

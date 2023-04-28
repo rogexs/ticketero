@@ -56,8 +56,7 @@ for (let index = 0; index < limite; index++) {
 
     // Crear y agregar el botón dentro del enlace
     var botonEvento = document.createElement("button");
-    botonEvento.id = index;
-    botonEvento.value = index;
+    botonEvento.id = "boton" + index;
     botonEvento.textContent = "Ver evento";
     enlaceEvento.appendChild(botonEvento);
 
