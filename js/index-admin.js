@@ -16,7 +16,7 @@ let limite = data[0].count;
 
 for (let index = 0; index < limite; index++) {
 
-    sessionStorage.setItem("dato " + index, "El id de evento es: " + data[index].id_eventos);
+    sessionStorage.setItem("evento " + index, "El id de evento es: " + data[index].id_eventos);
 
     // Crear el div
     var div = document.createElement("div");
@@ -56,7 +56,7 @@ for (let index = 0; index < limite; index++) {
 
     // Crear y agregar el botón dentro del enlace
     var botonEvento = document.createElement("button");
-    botonEvento.id = "boton" + index;
+    botonEvento.id = "evento " + index;
     botonEvento.textContent = "Ver evento";
     enlaceEvento.appendChild(botonEvento);
 
@@ -64,3 +64,14 @@ for (let index = 0; index < limite; index++) {
     var contenedor = document.getElementById("contenedor");
     contenedor.appendChild(div);
 }
+
+function imprimirId(event) {
+    let id = event.target.id;
+    sessionStorage.setItem('datoBotonEvento', id);
+}
+
+const enlaces = document.querySelectorAll("a");
+
+enlaces.forEach((enlace) => {
+    enlace.addEventListener("click", imprimirId);
+});
