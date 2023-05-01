@@ -44,7 +44,6 @@ body {
 /*Barra de navegacion*/
 .navbar1 {
     background-color: #0A6D94;
-    text-align: left;
     border-bottom: 5px solid #DF923A;
     box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
   }

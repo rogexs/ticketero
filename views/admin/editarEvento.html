@@ -47,7 +47,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 menu-bar">
 				<li class="nav-item">
-					<a class="nav-link" href="#" style="color: black;">Modo Administrador</a>
+					<a class="nav-link" href="#" >Modo Administrador</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Modo comprador</a>
@@ -79,78 +79,139 @@
 
 <!--Formulario-->
 <form>
-	<div class="container">
+	<div class="container" style="margin-top: 40px;">
 		
 			<div class="row fuente">
 				<div class="col-md-6">
-					<div class="form-group">
-					    <label for="nombre">Nombre del evento:</label>
-						<input type="text" class="form-control"  required>
-					</div>
-					<div class="form-group">
-						<label for="email">Tipo de evento:</label>
-						<select class="form-select" aria-label="Default select example">
-							<option value="1">Convención</option>
-							<option value="2">Boda</option>
-							<option value="3">Concierto</option>
-							<option value="4">Fiesta</option>
-							<option value="5">Otro</option>
-						  </select>
-					</div>					  
-					<div class="form-group">
-						<label for="nombre">Fecha del evento:</label>
-						<input type="text" class="form-control"  required>
-					</div>
-					<div class="form-group">
-						<label for="email">Horario del evento:</label>
-						<input type="text" class="form-control" id="email" required>
-					</div>
-					<div class="form-group">
-						<label for="nombre">Ciudad:</label>
-						<select class="form-select" aria-label="Default select example">
-							<option value="1">Coatzacoalcos</option>
-							<option value="2">Minatitlan</option>
-						  </select>
-					</div>
-					<div class="form-group">
-						<label for="email">Duración del evento:</label>
-						<input type="text" class="form-control" id="email" required>
-					</div>
-					<div class="form-group">
-						<label for="nombre">Organizador:</label>
-						<input type="text" class="form-control" id="nombre" required>
-					</div>
-					<div class="form-group">
-						<label for="email">Cantidad de invitados:</label>
-						<input type="text" class="form-control" id="email" required>
-					</div>
-					<div class="form-group">
-						<label for="email">Fecha limite de venta:</label>
-						<input type="text" class="form-control" id="email" required>
-					</div>
-					<div class="form-group">
-						<label for="email">Precio del boleto:</label>
-						<input type="text" class="form-control" id="email" required>
-					</div>
-					<div class="form-group">
-						<label for="email">Costo extra fl:</label>
-						<input type="text" class="form-control" id="email" required>
-					</div>
 
-					<label for="radioButtom">Visibilidad del evento:</label>
+					<!--Formulario-->
+						<div class="mb-3 row">
+							<label for="staticEvent" class="col-sm-5 col-form-label"><strong>Nombre del evento</strong></label>
+							<div class="col-sm-6">
+							<input type="text" class="form-control"  required>							
+							</div>
+						</div>
+						  <div class="mb-3 row">
+							<label for="staticTipoEvento" class="col-sm-5 col-form-label"><strong>Tipo de evento:</strong></label>
+							<div class="col-sm-6">
+								<select class="form-select" aria-label="Default select example">
+									<option value="1">Convención</option>
+									<option value="2">Boda</option>
+									<option value="3">Concierto</option>
+									<option value="4">Fiesta</option>
+									<option value="5">Otro</option>
+								</select>							
+							</div>
+						  </div>
 
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-						<label class="form-check-label" for="flexRadioDefault1">
-						  Público
-						</label>
-					  </div>
-					  <div class="form-check">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-						<label class="form-check-label" for="flexRadioDefault2">
-						  Privado
-						</label>
-					  </div>
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Fecha del evento:</strong></label>
+							<div class="col-sm-6">
+								<input type="date"  class="form-control" name="fecha" id="fecha" placeholder="Ingrese la fecha del evento">
+							</div>
+						  </div>
+
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario de inicio:</strong></label>
+							<div class="col-sm-6">
+								<input type="time" class="form-control" name="horioInicio" id="horarioInicio" placeholder="Ingrese el horario de inicio del evento">
+							</div>
+						  </div>
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario de fin:</strong></label>
+							<div class="col-sm-6">
+								<input type="time" class="form-control" name="horioFinal" id="horarioFinal" placeholder="Ingrese el horario de fin del evento">
+							</div>
+						  </div>
+
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Ciudad:</strong></label>
+							<div class="col-sm-6">
+								<select class="form-select" aria-label="Default select example">
+									<option value="1">Coatzacoalcos</option>
+									<option value="2">Minatitlan</option>
+								</select>
+							</div>
+						  </div>
+
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Dirección:</strong></label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="direccion" id="direccion" placeholder="Ingrese la direccion del evento">
+							</div>
+						  </div>
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Organizador:</strong></label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="organizador" id="organizador" placeholder="Ingrese el nombre del organizador">
+							</div>
+						  </div>
+
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Cantidad de invitados:</strong></label>
+							<div class="col-sm-6">
+								<input type="number" class="form-control" name="cantidad-invitados" id="cantidad-invitados" placeholder="Ingrese la cantidad de invitados">
+							</div>
+						  </div>
+
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Fecha limite de venta:</strong></label>
+							<div class="col-sm-6">
+								<input type="date" class="form-control" name="fecha-limite" id="fecha-limite" placeholder="Ingrese la fecha del evento">
+							</div>
+						  </div>
+
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Precio del boleto:</strong></label>
+							<div class="col-sm-6">
+								<input type="number" class="form-control" name="precio-boleto" id="precio-boleto" placeholder="Ingrese el precio del evento">
+							</div>
+						  </div>
+
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Costo extra FL:</strong></label>
+							<div class="col-sm-6">
+								<input type="number" class="form-control" name="costo-extra" id="costo-extra" placeholder="Ingrese el costo extra del evento">
+							</div>
+						  </div>
+
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Visibilidad del evento:</strong></label>
+							<div class="col-sm-6">
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+									<label class="form-check-label" for="flexRadioDefault1">
+									  Público
+									</label>
+								  </div>
+								  <div class="form-check">
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+									<label class="form-check-label" for="flexRadioDefault2">
+									  Privado
+									</label>
+								  </div>							
+								</div>
+						  </div>
+
+						  <div class="mb-3 row">
+							<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Tipo de evento:</strong></label>
+							<div class="col-sm-6">
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3">
+									<label class="form-check-label" for="flexRadioDefault3">
+									  Entrada libre
+									</label>
+								  </div>
+								  <div class="form-check">
+									<input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4" checked>
+									<label class="form-check-label" for="flexRadioDefault4">
+									  Pago por evento
+									</label>
+								  </div>							
+								</div>
+						  </div>
+
+					
 				</div>
 
 				<div class="col-md-6">
@@ -189,7 +250,7 @@
 		<!--boton Enviar-->
 		<div class="container text-center">
 				<div class="col-md-12">
-					<button type="submit" class="btn btn-primary enviar nokio" >Editar evento</button>
+					<button type="submit" class="btn btn-primary enviar nokio" >Guardar cambios</button>
 				</div>
 		</div>
 
