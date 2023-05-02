@@ -12,11 +12,11 @@ let limite = data[0].count;
 ({ data, error } = await supabase
     .from('eventos')
     .select()
-    .eq('id_usuario_auth', 'a35419a1-7ce1-4182-ae46-23168d30d6d6'))
+    .eq('id_usuario_auth', user.id))
 
 for (let index = 0; index < limite; index++) {
 
-    sessionStorage.setItem("evento " + index, "El id de evento es: " + data[index].id_eventos);
+    sessionStorage.setItem("evento " + index, data[index].id_eventos);
 
     // Crear el div
     var div = document.createElement("div");
@@ -26,27 +26,27 @@ for (let index = 0; index < limite; index++) {
 
     // Crear y agregar el elemento de texto del primer párrafo
     var nombreEvento = document.createElement("p");
-    nombreEvento.textContent = "Nombre de evento";
+    nombreEvento.textContent = data[index].nombre;
     div.appendChild(nombreEvento);
 
     // Crear y agregar el elemento de texto del segundo párrafo
     var fechaEvento = document.createElement("p");
-    fechaEvento.textContent = "Fecha: xx/xx/xxxx";
+    fechaEvento.textContent = "Fecha: "+data[index].fecha;
     div.appendChild(fechaEvento);
 
     // Crear y agregar el elemento de texto del tercer párrafo
     var entradaEvento = document.createElement("p");
-    entradaEvento.textContent = "Entrada: $$$$$";
+    entradaEvento.textContent = "Entrada: "+data[index].precio_boleto;
     div.appendChild(entradaEvento);
 
     // Crear y agregar el elemento de texto del cuarto párrafo
     var estadoEvento = document.createElement("p");
-    estadoEvento.textContent = "Estado: xxxxxxx";
+    estadoEvento.textContent = "Estado: "+data[index].estado;
     div.appendChild(estadoEvento);
 
     // Crear y agregar el elemento de texto del quinto párrafo
     var tipoEvento = document.createElement("p");
-    tipoEvento.textContent = "Tipo de evento: xxxxxxx";
+    tipoEvento.textContent = "Tipo de evento: "+data[index].tipo;
     div.appendChild(tipoEvento);
 
     // Crear y agregar el enlace
