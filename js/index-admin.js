@@ -40,59 +40,63 @@ for (let index = 0; index < limite; index++) {
 
     sessionStorage.setItem("evento " + index, data[index].id_eventos);
 
-    // Obtener el elemento contenedor
-    var contenedor = document.getElementById("contenedor");
-
-    // Crear el elemento div
+    // Crear el div
     var div = document.createElement("div");
 
-    // Establecer el estilo del borde
-    div.setAttribute("style", "border: 1rem solid goldenrod;");
+    // Establecer el estilo del div
+    div.style.border = "1rem solid goldenrod";
 
-    // Crear la imagen y establecer sus atributos
+    // crear la imagen
     var imagen = document.createElement("img");
     imagen.setAttribute("src", imgURL[index]);
     imagen.setAttribute("alt", "Imagen de evento");
     imagen.setAttribute("style", "max-width: 250px;");
-
-    // Crear los elementos de texto
-    var nombreEvento = document.createElement("p");
-    nombreEvento.innerText = data[index].nombre;
-
-    var fecha = document.createElement("p");
-    fecha.innerText = "Fecha: " + data[index].fecha;
-
-    var entrada = document.createElement("p");
-    entrada.innerText = "Entrada: " + data[index].precio_boleto;
-
-    var estado = document.createElement("p");
-    estado.innerText = "Estado: " + data[index].estado;
-
-    var tipoEvento = document.createElement("p");
-    tipoEvento.innerText = "Tipo de evento: " + data[index].tipo;
-
-    // Crear el enlace y el botón
-    var enlace = document.createElement("a");
-    enlace.setAttribute("href", "/admin/ver-evento.html");
-
-    var boton = document.createElement("button");
-    boton.setAttribute("id", "botoncito");
-    boton.setAttribute("value", "valorcito");
-    boton.innerText = "Ver evento";
-
-    // Agregar los elementos hijos al div
     div.appendChild(imagen);
+
+    // Crear y agregar el elemento de texto del primer párrafo
+    var nombreEvento = document.createElement("p");
+    nombreEvento.textContent = data[index].nombre;
     div.appendChild(nombreEvento);
-    div.appendChild(fecha);
-    div.appendChild(entrada);
-    div.appendChild(estado);
+
+    // Crear y agregar el elemento de texto del primer párrafo
+    var nombreEvento = document.createElement("p");
+    nombreEvento.textContent = data[index].nombre;
+    div.appendChild(nombreEvento);
+
+    // Crear y agregar el elemento de texto del segundo párrafo
+    var fechaEvento = document.createElement("p");
+    fechaEvento.textContent = "Fecha: " + data[index].fecha;
+    div.appendChild(fechaEvento);
+
+    // Crear y agregar el elemento de texto del tercer párrafo
+    var entradaEvento = document.createElement("p");
+    entradaEvento.textContent = "Entrada: " + data[index].precio_boleto;
+    div.appendChild(entradaEvento);
+
+    // Crear y agregar el elemento de texto del cuarto párrafo
+    var estadoEvento = document.createElement("p");
+    estadoEvento.textContent = "Estado: " + data[index].estado;
+    div.appendChild(estadoEvento);
+
+    // Crear y agregar el elemento de texto del quinto párrafo
+    var tipoEvento = document.createElement("p");
+    tipoEvento.textContent = "Tipo de evento: " + data[index].tipo;
     div.appendChild(tipoEvento);
-    enlace.appendChild(boton);
-    div.appendChild(enlace);
 
-    // Agregar el div al contenedor
+    // Crear y agregar el enlace
+    var enlaceEvento = document.createElement("a");
+    enlaceEvento.href = "/admin/ver-evento.html";
+    div.appendChild(enlaceEvento);
+
+    // Crear y agregar el botón dentro del enlace
+    var botonEvento = document.createElement("button");
+    botonEvento.id = "evento " + index;
+    botonEvento.textContent = "Ver evento";
+    enlaceEvento.appendChild(botonEvento);
+
+    // Agregar el nuevo div al contenedor
+    var contenedor = document.getElementById("contenedor");
     contenedor.appendChild(div);
-
 }
 
 function imprimirId(event) {

@@ -9,7 +9,28 @@ let { data, error } = await supabase
     .select()
     .eq('id_eventos', idEvento)
 
+var nombre = data[0].nombre;
+var estado = data[0].estado;
+var id = data[0].id_eventos;
+var tipo = data[0].tipo;
+var fecha = data[0].fecha;
+var inicio = data[0].horario_inicio;
+var fin = data[0].horario_final;
+var ciudad = data[0].ciudad;
+var direccion = data[0].direccion;
+var organizador = data[0].organizador;
+var cantidadInvitados = data[0].cantidad_invitados;
+var fechaLimite = data[0].fecha_limite;
+var precio = data[0].precio_boleto;
+var extraEvento = data[0].costo_extra;
+
+({ data, error } = await supabase
+    .storage
+    .from('imagen-evento')
+    .createSignedUrl(data[0].nombre, 600000))
+
 // Obtener una referencia al párrafo mediante su id
+var parrafoImagen = document.getElementById("imagenEvento");
 var parrafoNombre = document.getElementById("nombreEvento");
 var parrafoEstado = document.getElementById("estadoEvento");
 var parrafoId = document.getElementById("idEvento");
@@ -26,17 +47,18 @@ var parrafoPrecio = document.getElementById("precioEvento");
 var parrafoExtraEvento = document.getElementById("costoExtraEvento");
 
 // Modificar el contenido del párrafo
-parrafoNombre.textContent = data[0].nombre;
-parrafoEstado.textContent = "Estado: "+data[0].estado
-parrafoId.textContent = "ID: "+data[0].id_eventos;
-parrafoTipo.textContent = "Tipo: "+data[0].tipo;
-parrafoFecha.textContent = "Fecha: "+data[0].fecha
-parrafoInicio.textContent = "Horario de inicio: "+data[0].horario_inicio;
-parrafoFin.textContent = "Horario de fin: "+data[0].horario_final;
-parrafoCiudad.textContent = "Ciudad: "+data[0].ciudad
-parrafoDireccion.textContent = "Direccion: "+data[0].direccion
-parrafoOrganizador.textContent = "Organizador: "+data[0].organizador
-parrafoCantidad.textContent = "Cantidad de invitados: "+data[0].cantidad_invitados
-parrafoFechaLimite.textContent = "Fecha limite: "+data[0].fecha_limite
-parrafoPrecio.textContent = "Precio de boleto: "+data[0].precio_boleto
-parrafoExtraEvento.textContent = "Costo extra de boleto: "+data[0].costo_extra
+parrafoImagen.src = data.signedUrl;
+parrafoNombre.textContent = nombre;
+parrafoEstado.textContent = "Estado: "+ estado;
+parrafoId.textContent = "ID: "+ id;
+parrafoTipo.textContent = "Tipo: "+ tipo;
+parrafoFecha.textContent = "Fecha: "+ fecha;
+parrafoInicio.textContent = "Horario de inicio: "+ inicio;
+parrafoFin.textContent = "Horario de fin: "+ fin;
+parrafoCiudad.textContent = "Ciudad: "+ ciudad;
+parrafoDireccion.textContent = "Direccion: "+ direccion;
+parrafoOrganizador.textContent = "Organizador: "+ organizador;
+parrafoCantidad.textContent = "Cantidad de invitados: "+ cantidadInvitados;
+parrafoFechaLimite.textContent = "Fecha limite: "+fechaLimite;
+parrafoPrecio.textContent = "Precio de boleto: "+ precio;
+parrafoExtraEvento.textContent = "Costo extra de boleto: "+ extraEvento;
