@@ -1,5 +1,33 @@
 import { supabase } from "./conexion.js"
 
+const btnAccion = document.getElementById("accion");
+
+btnAccion.addEventListener('click', accionFuncion)
+
+const imgFile = new Image();
+imgFile.src = '/js/comic-con.jpg';
+
+
+async function accionFuncion() {
+    const imagen = document.getElementById("img").files[0];
+    console.log(imagen);
+
+    const { data, error } = await supabase
+        .storage
+        .from('imagen-evento')
+        .upload('avatar1', imagen, {
+            cacheControl: '3600',
+            upsert: false
+        })
+
+    if (error) {
+        console.log("Algo salio mal");
+    } else {
+        console.log("Todo bien");
+    }   
+
+}
+
 /*Metodo para obtener link de imagen
 
 async function accionFuncion() {
