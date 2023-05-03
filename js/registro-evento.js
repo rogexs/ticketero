@@ -43,6 +43,18 @@ async function registrarEvento() {
       .from('eventos')
       .insert({ id_usuario_auth, nombre, tipo, fecha, horario_inicio, horario_final, ciudad, direccion, organizador, cantidad_invitados, fecha_limite, precio_boleto, costo_extra, publico_privado, descripcion })
 
+
+
+   const imagen = document.getElementById("img").files[0];
+
+   const { data, error2 } = await supabase
+      .storage
+      .from('imagen-evento')
+      .upload(nombre, imagen, {
+         cacheControl: '3600',
+         upsert: false
+      })
+
    if (error) {
       alert('Registro evento incorrecto')
       console.log(error);

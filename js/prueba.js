@@ -4,10 +4,6 @@ const btnAccion = document.getElementById("accion");
 
 btnAccion.addEventListener('click', accionFuncion)
 
-const imgFile = new Image();
-imgFile.src = '/js/comic-con.jpg';
-
-
 async function accionFuncion() {
     const imagen = document.getElementById("img").files[0];
     console.log(imagen);

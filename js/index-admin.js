@@ -15,54 +15,63 @@ let limite = data[0].count;
     .eq('id_usuario_auth', user.id))
 
 for (let index = 0; index < limite; index++) {
+    
 
     sessionStorage.setItem("evento " + index, data[index].id_eventos);
 
-    // Crear el div
+    // Obtener el elemento contenedor
+    var contenedor = document.getElementById("contenedor");
+
+    // Crear el elemento div
     var div = document.createElement("div");
 
-    // Establecer el estilo del div
-    div.style.border = "1rem solid goldenrod";
+    // Establecer el estilo del borde
+    div.setAttribute("style", "border: 1rem solid goldenrod;");
 
-    // Crear y agregar el elemento de texto del primer párrafo
+    // Crear la imagen y establecer sus atributos
+    var imagen = document.createElement("img");
+    imagen.setAttribute("src", "comic-con.jpg");
+    imagen.setAttribute("alt", "Imagen evento");
+    imagen.setAttribute("style", "max-width: 250px;");
+
+    // Crear los elementos de texto
     var nombreEvento = document.createElement("p");
-    nombreEvento.textContent = data[index].nombre;
-    div.appendChild(nombreEvento);
+    nombreEvento.innerText = data[index].nombre;
 
-    // Crear y agregar el elemento de texto del segundo párrafo
-    var fechaEvento = document.createElement("p");
-    fechaEvento.textContent = "Fecha: "+data[index].fecha;
-    div.appendChild(fechaEvento);
+    var fecha = document.createElement("p");
+    fecha.innerText = "Fecha: " + data[index].fecha;
 
-    // Crear y agregar el elemento de texto del tercer párrafo
-    var entradaEvento = document.createElement("p");
-    entradaEvento.textContent = "Entrada: "+data[index].precio_boleto;
-    div.appendChild(entradaEvento);
+    var entrada = document.createElement("p");
+    entrada.innerText = "Entrada: " + data[index].precio_boleto;
 
-    // Crear y agregar el elemento de texto del cuarto párrafo
-    var estadoEvento = document.createElement("p");
-    estadoEvento.textContent = "Estado: "+data[index].estado;
-    div.appendChild(estadoEvento);
+    var estado = document.createElement("p");
+    estado.innerText = "Estado: " + data[index].estado;
 
-    // Crear y agregar el elemento de texto del quinto párrafo
     var tipoEvento = document.createElement("p");
-    tipoEvento.textContent = "Tipo de evento: "+data[index].tipo;
+    tipoEvento.innerText = "Tipo de evento: " + data[index].tipo;
+
+    // Crear el enlace y el botón
+    var enlace = document.createElement("a");
+    enlace.setAttribute("href", "/admin/ver-evento.html");
+
+    var boton = document.createElement("button");
+    boton.setAttribute("id", "botoncito");
+    boton.setAttribute("value", "valorcito");
+    boton.innerText = "Ver evento";
+
+    // Agregar los elementos hijos al div
+    div.appendChild(imagen);
+    div.appendChild(nombreEvento);
+    div.appendChild(fecha);
+    div.appendChild(entrada);
+    div.appendChild(estado);
     div.appendChild(tipoEvento);
+    enlace.appendChild(boton);
+    div.appendChild(enlace);
 
-    // Crear y agregar el enlace
-    var enlaceEvento = document.createElement("a");
-    enlaceEvento.href = "/admin/ver-evento.html";
-    div.appendChild(enlaceEvento);
-
-    // Crear y agregar el botón dentro del enlace
-    var botonEvento = document.createElement("button");
-    botonEvento.id = "evento " + index;
-    botonEvento.textContent = "Ver evento";
-    enlaceEvento.appendChild(botonEvento);
-
-    // Agregar el nuevo div al contenedor
-    var contenedor = document.getElementById("contenedor");
+    // Agregar el div al contenedor
     contenedor.appendChild(div);
+
 }
 
 function imprimirId(event) {
