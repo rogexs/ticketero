@@ -11,11 +11,32 @@ let limite = data[0].count;
 
 ({ data, error } = await supabase
     .from('eventos')
+    .select('nombre')
+    .eq('id_usuario_auth', user.id))
+
+let nombreURL = [];
+
+for (let index = 0; index < limite; index++) {
+    nombreURL.push(data[index].nombre);
+}
+
+let imgURL = [];
+
+for (let index = 0; index < limite; index++) {
+    ({ data, error } = await supabase
+        .storage
+        .from('imagen-evento')
+        .createSignedUrl(nombreURL[index], 600000))
+
+    imgURL.push(data.signedUrl);
+}
+
+({ data, error } = await supabase
+    .from('eventos')
     .select()
     .eq('id_usuario_auth', user.id))
 
 for (let index = 0; index < limite; index++) {
-    
 
     sessionStorage.setItem("evento " + index, data[index].id_eventos);
 
@@ -30,8 +51,8 @@ for (let index = 0; index < limite; index++) {
 
     // Crear la imagen y establecer sus atributos
     var imagen = document.createElement("img");
-    imagen.setAttribute("src", "comic-con.jpg");
-    imagen.setAttribute("alt", "Imagen evento");
+    imagen.setAttribute("src", imgURL[index]);
+    imagen.setAttribute("alt", "Imagen de evento");
     imagen.setAttribute("style", "max-width: 250px;");
 
     // Crear los elementos de texto
