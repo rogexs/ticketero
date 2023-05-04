@@ -4,12 +4,14 @@ import { supabase } from "./conexion.js"
 let { data, error } = await supabase
     .from('eventos')
     .select(`count`)
+    .eq('estado', 'desplegado')
 
 let limite = data[0].count;
 
 ({ data, error } = await supabase
     .from('eventos')
-    .select('nombre'))
+    .select('nombre')
+    .eq('estado', 'desplegado'))
 
 let nombreURL = [];
 
@@ -30,7 +32,8 @@ for (let index = 0; index < limite; index++) {
 
 ({ data, error } = await supabase
     .from('eventos')
-    .select())
+    .select()
+    .eq('estado', 'desplegado'))
 
 for (let index = 0; index < limite; index++) {
 
@@ -54,11 +57,6 @@ for (let index = 0; index < limite; index++) {
     nombreEvento.textContent = data[index].nombre;
     div.appendChild(nombreEvento);
 
-    // Crear y agregar el elemento de texto del primer párrafo
-    var nombreEvento = document.createElement("p");
-    nombreEvento.textContent = data[index].nombre;
-    div.appendChild(nombreEvento);
-
     // Crear y agregar el elemento de texto del segundo párrafo
     var fechaEvento = document.createElement("p");
     fechaEvento.textContent = "Fecha: " + data[index].fecha;
@@ -68,11 +66,6 @@ for (let index = 0; index < limite; index++) {
     var entradaEvento = document.createElement("p");
     entradaEvento.textContent = "Entrada: " + data[index].precio_boleto;
     div.appendChild(entradaEvento);
-
-    // Crear y agregar el elemento de texto del cuarto párrafo
-    var estadoEvento = document.createElement("p");
-    estadoEvento.textContent = "Estado: " + data[index].estado;
-    div.appendChild(estadoEvento);
 
     // Crear y agregar el elemento de texto del quinto párrafo
     var tipoEvento = document.createElement("p");
@@ -87,7 +80,7 @@ for (let index = 0; index < limite; index++) {
     // Crear y agregar el botón dentro del enlace
     var botonEvento = document.createElement("button");
     botonEvento.id = "evento " + index;
-    botonEvento.textContent = "Ver evento";
+    botonEvento.textContent = "Asistir a evento";
     enlaceEvento.appendChild(botonEvento);
 
     // Agregar el nuevo div al contenedor
