@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de evento</title>
+    <!--Supabase-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="/js/editar-evento.js"></script>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>Editar evento</h1>
+        <label for="correo">Nombre del evento:</label>
+        <input type="text" name="nombre" id="nombre">
+        <br>
+        <label for="tipo">Tipo del evento:</label>
+        <input type="text" name="tipo" id="tipo">
+        <br>
+        <label for="contra">Fecha:</label>
+        <input type="date" name="fecha" id="fecha">
+        <br>
+        <label for="contra">Horario de inicio</label>
+        <input type="time" name="horioInicio" id="horarioInicio">
+        <br>
+        <label for="contra">Horario de fin</label>
+        <input type="time" name="horioFinal" id="horarioFinal">
+        <br>
+        <label for="contra">Ciudad:</label>
+        <input type="text" name="ciudad" id="ciudad">
+        <br>
+        <label for="contra">Direccion:</label>
+        <input type="text" name="direccion" id="direccion">
+        <br>
+        <label for="contra">Organizador:</label>
+        <input type="text" name="organizador" id="organizador">
+        <br>
+        <label for="contra">Cantidad de invitados:</label>
+        <input type="number" name="cantidad-invitados" id="cantidad-invitados">
+        <br>
+        <label for="contra">Fecha limite de venta:</label>
+        <input type="date" name="fecha-limite" id="fecha-limite">
+        <br>
+        <label for="contra">Precio:</label>
+        <input type="number" name="precio-boleto" id="precio-boleto">
+        <br>
+        <label for="contra">Costo extra:</label>
+        <input type="number" name="costo-extra" id="costo-extra">
+        <br>
+        <label for="contra">Evento publico o privado:</label>
+        <input type="text" name="publico-privado" id="publico-privado">
+        <br>
+        <label for="contra">Descripcion del evento:</label>
+        <input type="text" name="descripcion" id="descripcion">
+        <br>
+        <input id="img" type="file">
+        <br>
+        <input type="submit" id="editar" value="Editar evento">
+    </div>
+</body>
+
+</html>
