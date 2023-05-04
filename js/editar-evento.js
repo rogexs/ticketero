@@ -61,7 +61,10 @@ txtCostoExtra.value = extraEvento;
 txtPublicoPrivado.value = publico_privado;
 txtDescripcion.value = descripcion;
 
-async function registrarEvento() {
+const btnEditar = document.getElementById("editarEvento");
+btnEditar.addEventListener('click', editarEvento)
+
+async function editarEvento() {
     let nombreEdit = txtNombre.value;
     let tipoEdit = txtTipo.value;
     let fechaEdit = txtFecha.value;
@@ -76,9 +79,21 @@ async function registrarEvento() {
     let costo_extraEdit = txtCostoExtra.value;
     let publico_privadoEdit = txtPublicoPrivado.value;
     let descripcionEdit = txtDescripcion.value;
-    let id_usuario_auth;
     
-    alert(nombreEdit);
+    console.log(nombreEdit);
+    console.log(tipoEdit);
+    console.log(fechaEdit);
+    console.log(horario_inicioEdit);
+    console.log(horario_finalEdit);
+    console.log(ciudadEdit);
+    console.log(direccionEdit);
+    console.log(organizadorEdit);
+    console.log(cantidad_invitadosEdit);
+    console.log(fecha_limiteEdit);
+    console.log(precio_boletoEdit);
+    console.log(costo_extraEdit);
+    console.log(publico_privadoEdit);
+    console.log(descripcionEdit);
 
     /**
     const { data: { user } } = await supabase.auth.getUser()
@@ -86,7 +101,7 @@ async function registrarEvento() {
  
     const { error } = await supabase
        .from('eventos')
-       .insert({ id_usuario_auth, nombreEdit, tipoEdit, fechaEdit, horario_inicioEdit, horario_finalEdit, ciudadEdit, direccionEdit, organizadorEdit, cantidad_invitadosEdit, fecha_limiteEdit, precio_boletoEdit, costo_extraEdit, publico_privadoEdit, descripcionEdit })
+       .insert({ nombreEdit, tipoEdit, fechaEdit, horario_inicioEdit, horario_finalEdit, ciudadEdit, direccionEdit, organizadorEdit, cantidad_invitadosEdit, fecha_limiteEdit, precio_boletoEdit, costo_extraEdit, publico_privadoEdit, descripcionEdit })
  
     const imagen = document.getElementById("img").files[0];
     

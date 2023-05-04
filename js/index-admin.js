@@ -58,11 +58,6 @@ for (let index = 0; index < limite; index++) {
     nombreEvento.textContent = data[index].nombre;
     div.appendChild(nombreEvento);
 
-    // Crear y agregar el elemento de texto del primer párrafo
-    var nombreEvento = document.createElement("p");
-    nombreEvento.textContent = data[index].nombre;
-    div.appendChild(nombreEvento);
-
     // Crear y agregar el elemento de texto del segundo párrafo
     var fechaEvento = document.createElement("p");
     fechaEvento.textContent = "Fecha: " + data[index].fecha;

@@ -45,7 +45,7 @@ async function eliminar() {
 
    let { data, error2 } = await supabase
       .storage
-      .from('imagen-eventos')
-      .remove([nombreImg])
+      .from('imagen-evento')
+      .remove(nombreImg)
 
 }
