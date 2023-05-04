@@ -1,13 +1,12 @@
 import { supabase } from "./conexion.js"
 
 const datoBoton = sessionStorage.getItem("datoBotonEvento");
-
 const idEvento = sessionStorage.getItem(datoBoton);
 
 let { data, error } = await supabase
-    .from('eventos')
-    .select()
-    .eq('id_eventos', idEvento)
+   .from('eventos')
+   .select()
+   .eq('id_eventos', idEvento)
 
 var nombre = data[0].nombre;
 var tipo = data[0].tipo;
@@ -25,9 +24,9 @@ var publico_privado = data[0].publico_privado;
 var descripcion = data[0].descripcion;
 
 ({ data, error } = await supabase
-    .storage
-    .from('imagen-evento')
-    .createSignedUrl(data[0].nombre, 600000))
+   .storage
+   .from('imagen-evento')
+   .createSignedUrl(data[0].nombre, 600000))
 
 // Obtener una referencia al párrafo mediante su id
 const txtNombre = document.getElementById("nombre");
@@ -65,61 +64,44 @@ const btnEditar = document.getElementById("editarEvento");
 btnEditar.addEventListener('click', editarEvento)
 
 async function editarEvento() {
-    let nombreEdit = txtNombre.value;
-    let tipoEdit = txtTipo.value;
-    let fechaEdit = txtFecha.value;
-    let horario_inicioEdit = txtHorarioInicio.value;
-    let horario_finalEdit = txtHorarioFinal.value;
-    let ciudadEdit = txtCiudad.value;
-    let direccionEdit = txtDireccion.value;
-    let organizadorEdit = txtOrganizador.value;
-    let cantidad_invitadosEdit = txtCantidadInvitados.value;
-    let fecha_limiteEdit = txtFechaLimite.value;
-    let precio_boletoEdit = txtPrecioBoleto.value;
-    let costo_extraEdit = txtCostoExtra.value;
-    let publico_privadoEdit = txtPublicoPrivado.value;
-    let descripcionEdit = txtDescripcion.value;
-    
-    console.log(nombreEdit);
-    console.log(tipoEdit);
-    console.log(fechaEdit);
-    console.log(horario_inicioEdit);
-    console.log(horario_finalEdit);
-    console.log(ciudadEdit);
-    console.log(direccionEdit);
-    console.log(organizadorEdit);
-    console.log(cantidad_invitadosEdit);
-    console.log(fecha_limiteEdit);
-    console.log(precio_boletoEdit);
-    console.log(costo_extraEdit);
-    console.log(publico_privadoEdit);
-    console.log(descripcionEdit);
+   let nombre = txtNombre.value;
+   let tipo = txtTipo.value;
+   let fecha = txtFecha.value;
+   let horario_inicio = txtHorarioInicio.value;
+   let horario_final = txtHorarioFinal.value;
+   let ciudad = txtCiudad.value;
+   let direccion = txtDireccion.value;
+   let organizador = txtOrganizador.value;
+   let cantidad_invitados = txtCantidadInvitados.value;
+   let fecha_limite = txtFechaLimite.value;
+   let precio_boleto = txtPrecioBoleto.value;
+   let costo_extra = txtCostoExtra.value;
+   let publico_privado = txtPublicoPrivado.value;
+   let descripcion = txtDescripcion.value;
 
-    /**
-    const { data: { user } } = await supabase.auth.getUser()
-    id_usuario_auth = user.id;
- 
-    const { error } = await supabase
-       .from('eventos')
-       .insert({ nombreEdit, tipoEdit, fechaEdit, horario_inicioEdit, horario_finalEdit, ciudadEdit, direccionEdit, organizadorEdit, cantidad_invitadosEdit, fecha_limiteEdit, precio_boletoEdit, costo_extraEdit, publico_privadoEdit, descripcionEdit })
- 
-    const imagen = document.getElementById("img").files[0];
-    
-    console.log(imagen);
-     
-    const { data, error2 } = await supabase
-       .storage
-       .from('imagen-evento')
-       .upload(nombre, imagen, {
-          cacheControl: '3600',
-          upsert: false
-       })
-       
-    if (error) {
-       alert('Registro evento incorrecto')
-       console.log(error);
-    } else {
-       alert('Registro evento correcto');
-    }
-    */
- }
+   const imagen = document.getElementById("img").files[0];
+
+   const { error } = await supabase
+      .from('eventos')
+      .update({ nombre, tipo, fecha, horario_inicio, horario_final, ciudad, direccion, organizador, cantidad_invitados, fecha_limite, precio_boleto, costo_extra, publico_privado, descripcion })
+      .eq('id_eventos', idEvento)
+
+   if (imagen) {
+      console.log("Imagen lleno");
+      const { data, error } = await supabase
+         .storage
+         .from('imagen-evento')
+         .update(nombre, imagen, {
+            cacheControl: '3600',
+            upsert: true
+         })
+   }
+
+   if (error) {
+      alert('Registro evento incorrecto')
+      console.log(error);
+   } else {
+      alert('Registro evento correcto');
+   }
+
+}
