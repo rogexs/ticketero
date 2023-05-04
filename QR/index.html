@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaner QR</title>
+
+    <!--Enlaces del QR-->
+    <script src="./node_modules/html5-qrcode/html5-qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js"
+        integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Enlaza los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!--Iconos de pestaña-->
+    <link rel="icon" type="image/x-com" href="../assets/img/ticketero.jpg">
+    <!--Boostrap Iconos CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <!--Boostrap:CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" href="/css/admin.css">
+    <!--CSS Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!--Header nav-->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid navbar navbar1">
+            <div class="container-fluid">
+                <div class="navbar-brand formato-div-logo d-inline-block align-text-top">
+                    <a href="../index.html">
+                        <img src="/assets/img/logo-ticket.png" alt="Logo de la pagina" width="38px">
+                    </a>
+                </div>
+                <h1 class="titulo-nav"><a href="/views/admin/Admin-home.html" class="logo">Ticketero</a></h1>
+
+                <button class="navbar-toggler justify-content-center" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 menu-bar">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/views/admin/Admin-home.html">Modo Administrador</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/QR/index.html">Escanear QR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cerrarSesionModal">Cerrar
+                            sesión</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #reader {
+            width: 600px;
+        }
+
+        #result {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+    </style>
+
+    <main style="margin-top: 60px;">
+        <div id="reader"></div>
+        <div id="result"></div>
+    </main>
+
+
+    <script>
+
+        const scanner = new Html5QrcodeScanner('reader', {
+            // Scanner will be initialized in DOM inside element with id of 'reader'
+            qrbox: {
+                width: 250,
+                height: 250,
+            },  // Sets dimensions of scanning box (set relative to reader element width)
+            fps: 20, // Frames per second to attempt a scan
+        });
+
+
+        scanner.render(success, error);
+        // Starts scanner
+
+        function success(result) {
+
+            document.getElementById('result').innerHTML = `
+            <h2>Success!</h2>
+            <p><a href="${result}">${result}</a></p>
+            `;
+            // Prints result as a link inside result element
+
+            scanner.clear();
+            // Clears scanning instance
+
+            document.getElementById('reader').remove();
+            // Removes reader element from DOM since no longer needed
+
+        }
+
+        function error(err) {
+            console.error(err);
+            // Prints any errors to the console
+        }
+
+    </script>
+
+    <!-- Modal Cerrar sesion -->
+    <div class="modal fade" id="cerrarSesionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea Cerrar Sesión?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-break" style="color: gray;"><em>Al realizar esta acción perdera acceso al sistema y a
+                            todas sus funciones<div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                    style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
+                                <a href="/views/general/home.html"><button type="button" class="btn btn-primary"
+                                        style="color: white; background-color: red; border: 2px solid #945819;">Aceptar</button></a>
+                            </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--FOOTER-->
+    <footer class="text-center text-white" style="background-color: #f1f1f1; margin-top: 250px;">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-facebook"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-twitter"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-instagram"></i></a>
+
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">Ticketero.com.mx</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <!--Boostrap:JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

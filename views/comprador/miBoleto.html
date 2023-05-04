@@ -46,18 +46,15 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 menu-bar">
-				<li class="nav-item">
-					<a class="nav-link" href="#" >Modo Administrador</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#" style="color: #DF923A;">Modo comprador</a>
-				</li>
-				<li class="nav-item">
+				  <li class="nav-item">
+					<a class="nav-link" href="/views/comprador/comprador-home.html">Modo comprador</a>
+				  </li>
+				  <li class="nav-item">
 					<a class="nav-link" href="/views/comprador/misBoletos.html">Ver mis boletos</a>
 				  </li>
-				<li class="nav-item">
-					<a class="nav-link" href="/views/login.html">Cerrar sesión</a>
-				</li>
+				  <li class="nav-item">
+					<a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#cerrarSesionModal">Cerrar sesión</a>
+				  </li>
 				
 			</ul>
 		</div>
@@ -73,6 +70,12 @@
 	</div>
   </div>
 
+   <!--Regresar-->
+<div class="container text-center">
+	<div class="col-md-12">
+		<a href="/views/comprador/misBoletos.html"><button type="submit" class="btn btn-primary nokio" style="margin-top: 30px;">Regresar</button></a>
+	</div>
+</div>
  
 
 
@@ -351,6 +354,28 @@
 				</div>
 				</div>
 			</div>
+
+			<!-- Modal Cerrar sesion -->
+			<div class="modal fade" id="cerrarSesionModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea Cerrar Sesión?</h1>
+				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+				  <p class="text-break" style="color: gray;"><em>Al realizar esta acción perdera acceso al sistema y a todas sus funciones<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+					  style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
+					<a href="/views/general/home.html"><button type="button" class="btn btn-primary"
+					  style="color: white; background-color: red; border: 2px solid #945819;">Aceptar</button></a>
+				  </div>
+				</div>
+		
+			  </div>
+			</div>
+		  </div>
 	  
 
 
