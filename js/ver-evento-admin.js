@@ -1,8 +1,10 @@
 import { supabase } from "./conexion.js"
 
 const datoBoton = sessionStorage.getItem("datoBotonEvento");
-
 const idEvento = sessionStorage.getItem(datoBoton);
+
+const editarSD = document.getElementById("editar-sd");
+const editar = document.getElementById("editar");
 
 let { data, error } = await supabase
     .from('eventos')
@@ -23,6 +25,12 @@ var cantidadInvitados = data[0].cantidad_invitados;
 var fechaLimite = data[0].fecha_limite;
 var precio = data[0].precio_boleto;
 var extraEvento = data[0].costo_extra;
+
+if (estado == "desplegado") {
+    editarSD.style.display = "none"
+} else {
+    editar.style.display = "none"
+}
 
 ({ data, error } = await supabase
     .storage

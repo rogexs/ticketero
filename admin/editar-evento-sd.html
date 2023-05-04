@@ -8,12 +8,18 @@
     <title>Editor de evento</title>
     <!--Supabase-->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script type="module" src="/js/editar-evento.js"></script>
+    <script type="module" src="/js/editar-evento-sd.js"></script>
 </head>
 
 <body>
     <div style="text-align: center;">
         <h1>Editar evento</h1>
+        <label for="correo">Nombre del evento:</label>
+        <input type="text" name="nombre" id="nombre">
+        <br>
+        <label for="tipo">Tipo del evento:</label>
+        <input type="text" name="tipo" id="tipo">
+        <br>
         <label for="contra">Fecha:</label>
         <input type="date" name="fecha" id="fecha">
         <br>
@@ -32,8 +38,14 @@
         <label for="contra">Organizador:</label>
         <input type="text" name="organizador" id="organizador">
         <br>
+        <label for="contra">Cantidad de invitados:</label>
+        <input type="number" name="cantidad-invitados" id="cantidad-invitados">
+        <br>
         <label for="contra">Fecha limite de venta:</label>
         <input type="date" name="fecha-limite" id="fecha-limite">
+        <br>
+        <label for="contra">Precio:</label>
+        <input type="number" name="precio-boleto" id="precio-boleto">
         <br>
         <label for="contra">Costo extra:</label>
         <input type="number" name="costo-extra" id="costo-extra">
