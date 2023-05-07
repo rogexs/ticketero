@@ -1,0 +1,155 @@
+/*Configuracion general*/
+body {
+    background-color: #F5F7FA;
+}
+
+/*Fuentes*/
+@font-face {
+    font-family: 'Nokio';
+    src: url(/assets/font/NokioMedium.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+.nokio {
+    font-family: 'Nokio';
+}
+
+/*Logo*/
+.format-logo {
+    width: 10px;
+    height: 10px;
+    align-items: center;
+}
+
+.formato-div-logo {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: 2px solid #DF923A;
+    border-radius: 55%;
+    box-sizing: border-box;
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    color: #ffffff;
+    text-decoration:none;
+}
+
+.logo:hover{
+    color: #ffffff;
+}
+
+/*Barra de navegacion*/
+.navbar1 {
+    background-color: #0A6D94;
+    border-bottom: 5px solid #DF923A;
+    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
+  }
+
+.titulo-nav {
+    margin-left: 60px;
+    margin-top: 10px;
+    position: absolute;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2575;
+    color: #ffffff;
+    font-family: 'Nokio', 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.menu-bar{
+    font-family: 'Montserrat';
+    background-color: #0A6D94;
+    text-align: center;
+}
+
+.nav-link{
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.nav-link:hover{
+    color: #DF923A;
+}
+
+.admin {
+    color: white;
+    font-family: 'Montserrat';
+    size: 2rem;
+    font-weight: 500;
+    line-height: 1.2575;
+}
+
+
+
+  .experiencia {
+    padding: 10px;
+    
+  }
+
+  .buscador {
+    padding: 40px;
+  }
+
+  .experiencia .row div {
+    margin-bottom: 10px;
+  }
+ 
+.navbar-nav li a {
+    height: 80px;
+    
+}
+.cargar-imagen,
+.enviar {
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    font-size: 20px;
+    background-color: #DF923A;
+    border: 2px solid #945819;
+    color: white;
+}
+
+.fuente {
+    font-family: 'Montserrat';
+}
+
+.titulo {
+    font-size: 30px;
+    color: white;
+    background-color: #DF923A;
+    border-radius: 10px;
+    border: 2px solid #945819;
+}
+
+.agregar {
+    font-size: 15px;
+    background-color: #DF923A;
+    border: 2px solid #945819;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.card-img-height .card-img-top {
+    height: 180px;
+    object-fit: cover; /* para que la imagen se ajuste dentro del espacio sin deformar */
+    
+  }
+
+  .evento {
+    font-size: 24px;
+    background-color: #DF923A;
+    border: 2px solid #945819;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    margin: 40px;
+  }
+  

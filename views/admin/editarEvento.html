@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Editar evento</title>
+	<!-- Enlaza los archivos CSS de Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!--Iconos de pestaña-->
+	<link rel="icon" type="image/x-com" href="../assets/img/ticketero.jpg">
+	<!--Boostrap Iconos CSS-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+	<!--Boostrap:CSS-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<!--CSS-->
+	<link rel="stylesheet" href="/css/admin.css">
+	<!--CSS Google Fonts-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+
+	<!--Header Nav-->
+	<nav class="navbar navbar-expand-lg bg-light">
+		<div class="container-fluid navbar navbar1">
+			<div class="container-fluid">
+				<div class="navbar-brand formato-div-logo d-inline-block align-text-top">
+					<a href="../index.html">
+						<img src="/assets/img/logo-ticket.png" alt="Logo de la pagina" width="38px">
+					</a>
+				</div>
+				<h1 class="titulo-nav"><a href="/views/admin/Admin-home.html" class="logo">Ticketero</a></h1>
+
+				<button class="navbar-toggler justify-content-center" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 menu-bar">
+					<li class="nav-item">
+						<a class="nav-link" href="/views/admin/Admin-home.html">Modo Administrador</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/QR/index.html">Escanear QR</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cerrarSesionModal">Cerrar
+							sesión</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!--Titulo-->
+	<div class="container text-center nokio titulo">
+		<div class="row">
+			<div class="col">
+				EDITAR EVENTO
+			</div>
+		</div>
+	</div>
+
+	<!--Cancelar-->
+	<div class="container text-center">
+		<div class="col-md-12">
+			<button type="submit" class="btn btn-danger nokio" style="margin-top: 30px;" data-bs-toggle="modal"
+				data-bs-target="#cancelarModal">Cancelar</button>
+		</div>
+	</div>
+
+
+	<!--Formulario-->
+	<form>
+		<div class="container" style="margin-top: 40px;">
+
+			<div class="row fuente">
+				<div class="col-md-6">
+
+					<!--Formulario-->
+					<div class="mb-3 row">
+						<label for="staticEvent" class="col-sm-5 col-form-label"><strong>Nombre del
+								evento</strong></label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="nombre" id="nombre"
+								placeholder="Ingrese el nombre del evento" required>
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<label for="staticTipoEvento" class="col-sm-5 col-form-label"><strong>Tipo de
+								evento:</strong></label>
+						<div class="col-sm-6">
+							<select class="form-select" aria-label="Default select example">
+								<option value="1">Convención</option>
+								<option value="2">Boda</option>
+								<option value="3">Concierto</option>
+								<option value="4">Fiesta</option>
+								<option value="5">Otro</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Fecha del
+								evento:</strong></label>
+						<div class="col-sm-6">
+							<input type="date" class="form-control" name="fecha" id="fecha"
+								placeholder="Ingrese la fecha del evento" required>
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario de
+								inicio:</strong></label>
+						<div class="col-sm-6">
+							<input type="time" class="form-control" name="horioInicio" id="horarioInicio"
+								placeholder="Ingrese el horario de inicio del evento" required>
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario de
+								fin:</strong></label>
+						<div class="col-sm-6">
+							<input type="time" class="form-control" name="horioFinal" id="horarioFinal"
+								placeholder="Ingrese el horario de fin del evento" required>
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Ciudad:</strong></label>
+						<div class="col-sm-6">
+							<select class="form-select" aria-label="Default select example">
+								<option value="1">Coatzacoalcos</option>
+								<option value="2">Minatitlan</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Dirección:</strong></label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="direccion" id="direccion"
+								placeholder="Ingrese la direccion del evento" required>
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Organizador:</strong></label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" name="organizador" id="organizador"
+								placeholder="Ingrese el nombre del organizador" required>
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Cantidad de
+								invitados:</strong></label>
+						<div class="col-sm-6">
+							<input type="number" class="form-control" name="cantidad-invitados" id="cantidad-invitados"
+								placeholder="Ingrese la cantidad de invitados" required>
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Fecha limite de
+								venta:</strong></label>
+						<div class="col-sm-6">
+							<input type="date" class="form-control" name="fecha-limite" id="fecha-limite"
+								placeholder="Ingrese la fecha del evento" required>
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Precio del
+								boleto:</strong></label>
+						<div class="col-sm-6">
+							<input type="number" class="form-control" name="precio-boleto" id="precio-boleto"
+								placeholder="Ingrese el precio del evento" required>
+						</div>
+					</div>
+
+					<div class="mb-3 row">
+						<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Costo extra
+								FL:</strong></label>
+						<div class="col-sm-6">
+							<input type="number" class="form-control" name="costo-extra" id="costo-extra"
+								placeholder="Ingrese el costo extra del evento" required>
+						</div>
+					</div>
+
+
+
+
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="mensaje">Descripción del evento:</label>
+						<textarea class="form-control" id="mensaje" style="height: 200px;" required></textarea>
+					</div>
+
+					<!--Seleccionar imagen-->
+					<div>
+						<label for="formFileLg" class="form-label nokio">Selecciona una imagen para tu evento</label>
+						<input class="form-control form-control-lg cargar-imagen nokio" id="seleccionador-de-imagen"
+							type="file">
+					</div>
+					<button type="button" class="btn enviar nokio" id="boton-cargar">Mostrar imagen</button>
+					<br />
+					<br />
+					<img src="" class="img-fluid" alt="Mi imagen" id="mi-imagen">
+					<script>
+						const seleccionadorDeImagen = document.getElementById("seleccionador-de-imagen");
+						const botonCargar = document.getElementById("boton-cargar");
+						const miImagen = document.getElementById("mi-imagen");
+
+						botonCargar.addEventListener("click", () => {
+							const archivo = seleccionadorDeImagen.files[0];
+							const lectorDeArchivo = new FileReader();
+
+							lectorDeArchivo.readAsDataURL(archivo);
+
+							lectorDeArchivo.addEventListener("load", () => {
+								miImagen.src = lectorDeArchivo.result;
+							});
+						});
+					</script>
+				</div>
+			</div>
+			<!--boton Enviar-->
+			<div class="container text-center">
+				<div class="col-md-12">
+					<button type="submit" class="btn btn-primary enviar nokio">Guardar cambios</button>
+				</div>
+			</div>
+
+		</div>
+	</form>
+
+
+	<!-- Modal cancelar -->
+	<div class="modal fade" id="cancelarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea cancelar la edición del
+						evento?</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p class="text-break" style="color: gray;"><em>Todos los cambios que no se hayan guardado se
+							perderan</em></p>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+							style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
+						<a href="/views/admin/AdministrarEvento.html"><button type="button" class="btn btn-primary"
+								style="color: white; background-color: red; border: 2px solid #945819;">Aceptar</button></a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Cerrar sesion -->
+	<div class="modal fade" id="cerrarSesionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea Cerrar Sesión?</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p class="text-break" style="color: gray;"><em>Al realizar esta acción perdera acceso al sistema y a
+							todas sus funciones<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+									style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
+								<a href="/views/general/home.html"><button type="button" class="btn btn-primary"
+										style="color: white; background-color: red; border: 2px solid #945819;">Aceptar</button></a>
+							</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!--FOOTER-->
+	<footer class="text-center text-white" style="background-color: #f1f1f1;">
+		<!-- Grid container -->
+		<div class="container pt-4">
+			<!-- Section: Social media -->
+			<section class="mb-4">
+				<!-- Facebook -->
+				<a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+					data-mdb-ripple-color="dark"><i class="bi bi-facebook"></i></a>
+
+				<!-- Twitter -->
+				<a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+					data-mdb-ripple-color="dark"><i class="bi bi-twitter"></i></a>
+
+				<!-- Instagram -->
+				<a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+					data-mdb-ripple-color="dark"><i class="bi bi-instagram"></i></a>
+
+				<!-- Github -->
+				<a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+					data-mdb-ripple-color="dark"><i class="bi bi-github"></i></a>
+			</section>
+			<!-- Section: Social media -->
+		</div>
+		<!-- Grid container -->
+
+		<!-- Copyright -->
+		<div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2023 Copyright:
+			<a class="text-dark" href="https://mdbootstrap.com/">Ticketero.com.mx</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+
+
+
+	<!--Boostrap:JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
