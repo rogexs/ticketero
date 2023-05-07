@@ -95,7 +95,7 @@ async function comprarBoleto() {
     // Crear una cadena con el formato "día/mes/año"
     const fecha_compra = `${dia}/${mes}/${año}`;
 
-    let { error } = await supabase
+    let { data, error } = await supabase
         .from('boletos')
         .insert({
             id_usuario,
@@ -112,12 +112,14 @@ async function comprarBoleto() {
             ciudad,
             direccion
         })
-
-    console.log(error);
+        .select()
 
     if (error) {
         alert("Error de compra")
     } else {
         alert("Compra correcta")
+        sessionStorage.setItem('idBoletoPostCompra', data[0].id_boleto);
+        sessionStorage.setItem('idEventoPostCompra', idEvento);
+        window.location.href = "/comp/post-compra.html";
     }
 }
