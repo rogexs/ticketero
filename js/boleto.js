@@ -1,6 +1,7 @@
 import { supabase } from "./conexion.js"
 
-const idBoleto = sessionStorage.getItem('idBoletoPostCompra');
+const datoBotonBoleto = sessionStorage.getItem("datoBotonBoleto");
+const idBoleto = sessionStorage.getItem(datoBotonBoleto);
 
 let { data, error } = await supabase
     .from('boletos')
@@ -61,3 +62,21 @@ parrafoCorreo.textContent = "Correo: " + correo;
 parrafoFechaCompra.textContent = "Fecha de compra: " + fecha_compra;
 parrafoHoraCompra.textContent = "Hora de compra: " + hora_compra;
 parrafoEstadoBoleto.textContent = "Estado de boleto: " + estado_boleto;
+
+const btnEliminarBoleto = document.getElementById("eliminarBoleto");
+
+btnEliminarBoleto.addEventListener('click', eliminar)
+
+async function eliminar() {
+
+   let { error } = await supabase
+      .from('boletos')
+      .delete()
+      .eq('id_boleto', id_boleto)
+
+   if (error) {
+      alert(error);
+   }else{
+    window.location.href = '/comp/mis-boletos.html'
+   }
+}
