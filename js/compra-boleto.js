@@ -95,20 +95,6 @@ async function comprarBoleto() {
     // Crear una cadena con el formato "día/mes/año"
     const fecha_compra = `${dia}/${mes}/${año}`;
 
-    console.log(id_usuario);
-    console.log(nombre_comprador);
-    console.log(correo);
-    console.log(fecha_compra);
-    console.log(hora_compra);
-    console.log(id_evento);
-    console.log(nombre_evento);
-    console.log(tipo_evento);
-    console.log(fecha_evento);
-    console.log(hora_inicio);
-    console.log(hora_final);
-    console.log(ciudad);
-    console.log(direccion);
-
     let { error } = await supabase
         .from('boletos')
         .insert({
