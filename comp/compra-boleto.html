@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver evento</title>
+    <!--Supabase-->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="/js/compra-boleto.js"></script>
 </head>
 <body>
     <h1>Asistencia boleto</h1>
+    <img id="imagenEvento" src="" alt="Imagen de evento" style="max-width: 250px;">
     <p id="idEvento"></p>
     <p id="nombreEvento"></p>
     <p id="tipoEvento"></p>
@@ -17,7 +21,10 @@
     <p id="ciudadEvento"></p>
     <p id="direccionEvento"></p>
     <p id="fechaLimiteEvento"></p>
-    <br>
-    <button id="cerrarSesion"><a href="compra-boleto.html">Asistir a evento</a></button>
+    <hr>
+    <p id="nombreComprador"></p>
+    <p id="correo"></p>
+    <p id="costoBoleto"></p>
+    <button id="compraBoleto"><a href="">Comprar boleto</a></button>
 </body>
 </html>
