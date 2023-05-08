@@ -16,37 +16,7 @@ var hora_inicio = data[0].horario_inicio;
 var hora_final = data[0].horario_final;
 var ciudad = data[0].ciudad;
 var direccion = data[0].direccion;
-var fechaLimite_evento = data[0].fecha_limite;
 var precio_evento = data[0].precio_boleto;
-
-({ data, error } = await supabase
-    .storage
-    .from('imagen-evento')
-    .createSignedUrl(data[0].nombre, 600000))
-
-// Obtener una referencia al párrafo mediante su id
-var parrafoImagen = document.getElementById("imagenEvento");
-var parrafoNombreEvento = document.getElementById("nombreEvento");
-var parrafoId = document.getElementById("idEvento");
-var parrafoTipo = document.getElementById("tipoEvento");
-var parrafoFecha = document.getElementById("fechaEvento");
-var parrafoInicio = document.getElementById("horarioInicioEvento");
-var parrafoFin = document.getElementById("horarioFinEvento");
-var parrafoCiudad = document.getElementById("ciudadEvento");
-var parrafoDireccion = document.getElementById("direccionEvento");
-var parrafoFechaLimite = document.getElementById("fechaLimiteEvento");
-
-// Modificar el contenido del párrafo
-parrafoImagen.src = data.signedUrl;
-parrafoNombreEvento.textContent = nombre_evento;
-parrafoId.textContent = "ID: " + id_evento;
-parrafoTipo.textContent = "Tipo: " + tipo_evento;
-parrafoFecha.textContent = "Fecha: " + fecha_evento;
-parrafoInicio.textContent = "Horario de inicio: " + hora_inicio;
-parrafoFin.textContent = "Horario de fin: " + hora_final;
-parrafoCiudad.textContent = "Ciudad: " + ciudad;
-parrafoDireccion.textContent = "Direccion: " + direccion;
-parrafoFechaLimite.textContent = "Fecha limite: " + fechaLimite_evento;
 
 ({ data, error } = await supabase.auth.getSession())
 
@@ -61,13 +31,13 @@ let id_usuario = data[0].id_usuario;
 let nombre_comprador = data[0].nombre;
 let correo = data[0].correo;
 
-var parrafoNombreComprador = document.getElementById("nombreComprador");
-var parrafoCorreo = document.getElementById("correo");
-var parrafoCosto = document.getElementById("costoBoleto");
+var parrafoNombreComprador = document.getElementById("staticNombre");
+var parrafoCorreo = document.getElementById("staticEmail");
+var parrafoCosto = document.getElementById("staticCosteBoleto");
 
-parrafoNombreComprador.textContent = "Nombre del comprador: " + nombre_comprador;
-parrafoCorreo.textContent = "Correo: " + correo;
-parrafoCosto.textContent = "Costo: " + precio_evento;
+parrafoNombreComprador.value = nombre_comprador;
+parrafoCorreo.value = correo;
+parrafoCosto.value = precio_evento;
 
 var btnComprar = document.getElementById("compraBoleto");
 
@@ -95,7 +65,7 @@ async function comprarBoleto() {
     // Crear una cadena con el formato "día/mes/año"
     const fecha_compra = `${dia}/${mes}/${año}`;
 
-    let { data, error } = await supabase
+    const { error } = await supabase
         .from('boletos')
         .insert({
             id_usuario,
@@ -112,14 +82,12 @@ async function comprarBoleto() {
             ciudad,
             direccion
         })
-        .select()
 
     if (error) {
+        console.log(error);
         alert("Error de compra")
     } else {
         alert("Compra correcta")
-        sessionStorage.setItem('idBoletoPostCompra', data[0].id_boleto);
-        sessionStorage.setItem('idEventoPostCompra', idEvento);
-        window.location.href = "/comp/post-compra.html";
+        window.location.href = "/comp/comprador-home.html";
     }
 }
