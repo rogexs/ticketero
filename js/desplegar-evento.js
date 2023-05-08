@@ -4,10 +4,6 @@ const datoBoton = sessionStorage.getItem("datoBotonEvento");
 
 const idEvento = sessionStorage.getItem(datoBoton);
 
-const btnDesplegarEvento = document.getElementById("desplegarEvento");
-
-btnDesplegarEvento.addEventListener('click', desplegar)
-
 let { data, error } = await supabase
       .from('eventos')
       .select('nombre')
@@ -15,13 +11,17 @@ let { data, error } = await supabase
 
 let nombreImg = data[0].nombre;
 
+const btnDesplegarEvento = document.getElementById("desplegarEvento");
+
+btnDesplegarEvento.addEventListener('click', desplegar)
+
 async function desplegar() {
 
    const { error } = await supabase
       .from('eventos')
       .update({ estado: 'desplegado' })
       .eq('id_eventos', idEvento)
-
+      window.location.href = '/views/admin/Admin-home.html'
    if (error) {
       alert(error);
    }
@@ -41,11 +41,11 @@ async function eliminar() {
 
    if (error) {
       alert(error);
+   } else {
+      let { data, error2 } = await supabase
+         .storage
+         .from('imagen-evento')
+         .remove(nombreImg)
+         window.location.href = '/views/admin/Admin-home.html';
    }
-
-   let { data, error2 } = await supabase
-      .storage
-      .from('imagen-evento')
-      .remove(nombreImg)
-
 }

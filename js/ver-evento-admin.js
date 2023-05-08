@@ -2,9 +2,9 @@ import { supabase } from "./conexion.js"
 
 const datoBoton = sessionStorage.getItem("datoBotonEvento");
 const idEvento = sessionStorage.getItem(datoBoton);
-
-const editarSD = document.getElementById("editar-sd");
-const editar = document.getElementById("editar");
+ 
+const editarSD = document.getElementById("lista-opciones").getElementsByTagName("li")[0];
+const editar = document.getElementById("lista-opciones").getElementsByTagName("li")[1];
 
 let { data, error } = await supabase
     .from('eventos')
@@ -35,38 +35,38 @@ if (estado == "desplegado") {
 ({ data, error } = await supabase
     .storage
     .from('imagen-evento')
-    .createSignedUrl(data[0].nombre, 600000))
+    .createSignedUrl("evento "+idEvento, 600000))
 
 // Obtener una referencia al párrafo mediante su id
 var parrafoImagen = document.getElementById("imagenEvento");
-var parrafoNombre = document.getElementById("nombreEvento");
-var parrafoEstado = document.getElementById("estadoEvento");
-var parrafoId = document.getElementById("idEvento");
-var parrafoTipo = document.getElementById("tipoEvento");
-var parrafoFecha = document.getElementById("fechaEvento");
-var parrafoInicio = document.getElementById("horarioInicioEvento");
-var parrafoFin = document.getElementById("horarioFinEvento");
-var parrafoCiudad = document.getElementById("ciudadEvento");
-var parrafoDireccion = document.getElementById("direccionEvento");
-var parrafoOrganizador = document.getElementById("organizadorEvento");
-var parrafoCantidad = document.getElementById("cantidadEvento");
-var parrafoFechaLimite = document.getElementById("fechaLimiteEvento");
-var parrafoPrecio = document.getElementById("precioEvento");
-var parrafoExtraEvento = document.getElementById("costoExtraEvento");
+var parrafoNombre = document.getElementById("staticEvent");
+var parrafoEstado = document.getElementById("staticEstado");
+var parrafoId = document.getElementById("staticID");
+var parrafoTipo = document.getElementById("staticTipoEvento");
+var parrafoFecha = document.getElementById("staticFecha");
+var parrafoInicio = document.getElementById("staticHorarioInicio");
+var parrafoFin = document.getElementById("staticHorarioFin");
+var parrafoCiudad = document.getElementById("staticCiudad");
+var parrafoDireccion = document.getElementById("staticDireccion");
+var parrafoOrganizador = document.getElementById("staticOrganizador");
+var parrafoCantidad = document.getElementById("staticCantidadInvitados");
+var parrafoFechaLimite = document.getElementById("staticFechaLimite");
+var parrafoPrecio = document.getElementById("staticPrecio");
+var parrafoExtraEvento = document.getElementById("staticCostoExtra");
 
 // Modificar el contenido del párrafo
 parrafoImagen.src = data.signedUrl;
-parrafoNombre.textContent = nombre;
-parrafoEstado.textContent = "Estado: "+ estado;
-parrafoId.textContent = "ID: "+ id;
-parrafoTipo.textContent = "Tipo: "+ tipo;
-parrafoFecha.textContent = "Fecha: "+ fecha;
-parrafoInicio.textContent = "Horario de inicio: "+ inicio;
-parrafoFin.textContent = "Horario de fin: "+ fin;
-parrafoCiudad.textContent = "Ciudad: "+ ciudad;
-parrafoDireccion.textContent = "Direccion: "+ direccion;
-parrafoOrganizador.textContent = "Organizador: "+ organizador;
-parrafoCantidad.textContent = "Cantidad de invitados: "+ cantidadInvitados;
-parrafoFechaLimite.textContent = "Fecha limite: "+fechaLimite;
-parrafoPrecio.textContent = "Precio de boleto: "+ precio;
-parrafoExtraEvento.textContent = "Costo extra de boleto: "+ extraEvento;
+parrafoNombre.value = nombre;
+parrafoEstado.value = estado;
+parrafoId.value = id;
+parrafoTipo.value = tipo;
+parrafoFecha.value= fecha;
+parrafoInicio.value = inicio;
+parrafoFin.value = fin;
+parrafoCiudad.value = ciudad;
+parrafoDireccion.value = direccion;
+parrafoOrganizador.value = organizador;
+parrafoCantidad.value = cantidadInvitados;
+parrafoFechaLimite.value = fechaLimite;
+parrafoPrecio.value = precio;
+parrafoExtraEvento.value = extraEvento;

@@ -11,13 +11,13 @@ let limite = data[0].count;
 
 ({ data, error } = await supabase
     .from('eventos')
-    .select('nombre')
+    .select('id_eventos')
     .eq('id_usuario_auth', user.id))
 
 let nombreURL = [];
 
 for (let index = 0; index < limite; index++) {
-    nombreURL.push(data[index].nombre);
+    nombreURL.push("evento "+data[index].id_eventos);
 }
 
 let imgURL = [];
@@ -40,58 +40,80 @@ for (let index = 0; index < limite; index++) {
 
     sessionStorage.setItem("evento " + index, data[index].id_eventos);
 
-    // Crear el div
-    var div = document.createElement("div");
+    // Crear el div con las clases "col-12 col-md-4"
+    const div = document.createElement('div');
+    div.classList.add('col-12', 'col-md-4');
 
-    // Establecer el estilo del div
-    div.style.border = "1rem solid goldenrod";
+    // Crear el div con las clases "card card-img-height" y el estilo inline
+    const innerDiv = document.createElement('div');
+    innerDiv.classList.add('card', 'card-img-height');
+    innerDiv.style.width = '18rem';
 
-    // crear la imagen
-    var imagen = document.createElement("img");
-    imagen.setAttribute("src", imgURL[index]);
-    imagen.setAttribute("alt", "Imagen de evento");
-    imagen.setAttribute("style", "max-width: 250px;");
-    div.appendChild(imagen);
+    // Crear la imagen
+    const img = document.createElement('img');
+    img.src = imgURL[index];
+    img.classList.add('card-img-top');
+    img.alt = 'imagen-evento';
+    innerDiv.appendChild(img);
 
-    // Crear y agregar el elemento de texto del primer párrafo
-    var nombreEvento = document.createElement("p");
-    nombreEvento.textContent = data[index].nombre;
-    div.appendChild(nombreEvento);
+    // Crear el div con la clase "card-body"
+    const cardBodyDiv = document.createElement('div');
+    cardBodyDiv.classList.add('card-body');
 
-    // Crear y agregar el elemento de texto del segundo párrafo
-    var fechaEvento = document.createElement("p");
-    fechaEvento.textContent = "Fecha: " + data[index].fecha;
-    div.appendChild(fechaEvento);
+    // Crear el título h5
+    const cardTitle = document.createElement('h5');
+    cardTitle.classList.add('card-title');
+    cardTitle.textContent = data[index].nombre;
+    cardBodyDiv.appendChild(cardTitle);
 
-    // Crear y agregar el elemento de texto del tercer párrafo
-    var entradaEvento = document.createElement("p");
-    entradaEvento.textContent = "Entrada: " + data[index].precio_boleto;
-    div.appendChild(entradaEvento);
+    // Crear la lista ul con la clase "list-group list-group-flush"
+    const ul = document.createElement('ul');
+    ul.classList.add('list-group', 'list-group-flush');
 
-    // Crear y agregar el elemento de texto del cuarto párrafo
-    var estadoEvento = document.createElement("p");
-    estadoEvento.textContent = "Estado: " + data[index].estado;
-    div.appendChild(estadoEvento);
+    // Crear los elementos de la lista li
+    const fechaLi = document.createElement('li');
+    fechaLi.classList.add('list-group-item');
+    fechaLi.textContent = 'Fecha: '+data[index].fecha;
+    ul.appendChild(fechaLi);
 
-    // Crear y agregar el elemento de texto del quinto párrafo
-    var tipoEvento = document.createElement("p");
-    tipoEvento.textContent = "Tipo de evento: " + data[index].tipo;
-    div.appendChild(tipoEvento);
+    const entradaLi = document.createElement('li');
+    entradaLi.classList.add('list-group-item');
+    entradaLi.textContent = 'Entrada: '+data[index].precio_boleto;
+    ul.appendChild(entradaLi);
 
-    // Crear y agregar el enlace
-    var enlaceEvento = document.createElement("a");
-    enlaceEvento.href = "/admin/ver-evento.html";
-    div.appendChild(enlaceEvento);
+    const estadoLi = document.createElement('li');
+    estadoLi.classList.add('list-group-item');
+    estadoLi.textContent = 'Estado: '+data[index].estado;
+    ul.appendChild(estadoLi);
 
-    // Crear y agregar el botón dentro del enlace
-    var botonEvento = document.createElement("button");
-    botonEvento.id = "evento " + index;
-    botonEvento.textContent = "Ver evento";
-    enlaceEvento.appendChild(botonEvento);
+    const tipoEventoLi = document.createElement('li');
+    tipoEventoLi.classList.add('list-group-item');
+    tipoEventoLi.textContent = 'Tipo de evento: '+data[index].tipo;
+    ul.appendChild(tipoEventoLi);
 
-    // Agregar el nuevo div al contenedor
-    var contenedor = document.getElementById("contenedor");
+    // Agregar la lista ul al div con la clase "card-body"
+    cardBodyDiv.appendChild(ul);
+
+    // Crear el enlace a con la clase "btn btn-primary" y el id "evento"
+    const a = document.createElement('a');
+    a.href = '/views/admin/AdministrarEvento.html';
+    a.classList.add('btn', 'btn-primary');
+    a.id = 'evento '+ index;
+    a.textContent = 'Ver Evento';
+
+    // Agregar el enlace a al div con la clase "card-body"
+    cardBodyDiv.appendChild(a);
+
+    // Agregar el div con la clase "card-body" al div con las clases "card card-img-height"
+    innerDiv.appendChild(cardBodyDiv);
+
+    // Agregar el div con las clases "card card-img-height" al div con las clases "col-12 col-md-4"
+    div.appendChild(innerDiv);
+
+    // Agregar el div al contenedor
+    const contenedor = document.getElementById('contenedor');
     contenedor.appendChild(div);
+
 }
 
 function imprimirId(event) {
@@ -104,3 +126,4 @@ const enlaces = document.querySelectorAll("a");
 enlaces.forEach((enlace) => {
     enlace.addEventListener("click", imprimirId);
 });
+

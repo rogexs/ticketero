@@ -20,6 +20,7 @@ const btnRegistrar = document.getElementById("registrar");
 btnRegistrar.addEventListener('click', registrarEvento)
 
 async function registrarEvento() {
+
    let nombre = txtNombre.value;
    let tipo = txtTipo.value;
    let fecha = txtFecha.value;
@@ -39,26 +40,29 @@ async function registrarEvento() {
    const { data: { user } } = await supabase.auth.getUser()
    id_usuario_auth = user.id;
 
-   const { error } = await supabase
+   let { data, error } = await supabase
       .from('eventos')
       .insert({ id_usuario_auth, nombre, tipo, fecha, horario_inicio, horario_final, ciudad, direccion, organizador, cantidad_invitados, fecha_limite, precio_boleto, costo_extra, publico_privado, descripcion })
+      .select()
 
+   let nombreImg ="evento "+data[0].id_eventos;
 
+   const imagen = document.getElementById("seleccionador-de-imagen").files[0];
 
-   const imagen = document.getElementById("img").files[0];
-
-   const { data, error2 } = await supabase
+   ({ data, error } = await supabase
       .storage
       .from('imagen-evento')
-      .upload(nombre, imagen, {
+      .upload(nombreImg , imagen, {
          cacheControl: '3600',
          upsert: false
-      })
+      }))
 
    if (error) {
       alert('Registro evento incorrecto')
       console.log(error);
    } else {
       alert('Registro evento correcto');
+      window.location.href = '/views/admin/Admin-home.html';
    }
+
 }

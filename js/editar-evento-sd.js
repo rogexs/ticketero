@@ -20,13 +20,9 @@ var cantidadInvitados = data[0].cantidad_invitados;
 var fechaLimite = data[0].fecha_limite;
 var precio = data[0].precio_boleto;
 var extraEvento = data[0].costo_extra;
-var publico_privado = data[0].publico_privado;
 var descripcion = data[0].descripcion;
 
-({ data, error } = await supabase
-   .storage
-   .from('imagen-evento')
-   .createSignedUrl(data[0].nombre, 600000))
+console.log(ciudad);
 
 // Obtener una referencia al párrafo mediante su id
 const txtNombre = document.getElementById("nombre");
@@ -41,7 +37,6 @@ const txtCantidadInvitados = document.getElementById("cantidad-invitados");
 const txtFechaLimite = document.getElementById("fecha-limite");
 const txtPrecioBoleto = document.getElementById("precio-boleto");
 const txtCostoExtra = document.getElementById("costo-extra");
-const txtPublicoPrivado = document.getElementById("publico-privado");
 const txtDescripcion = document.getElementById("descripcion");
 
 // Modificar el contenido del párrafo
@@ -57,7 +52,6 @@ txtCantidadInvitados.value = cantidadInvitados;
 txtFechaLimite.value = fechaLimite;
 txtPrecioBoleto.value = precio;
 txtCostoExtra.value = extraEvento;
-txtPublicoPrivado.value = publico_privado;
 txtDescripcion.value = descripcion;
 
 const btnEditar = document.getElementById("editarEvento");
@@ -76,14 +70,13 @@ async function editarEvento() {
    let fecha_limite = txtFechaLimite.value;
    let precio_boleto = txtPrecioBoleto.value;
    let costo_extra = txtCostoExtra.value;
-   let publico_privado = txtPublicoPrivado.value;
    let descripcion = txtDescripcion.value;
 
-   const imagen = document.getElementById("img").files[0];
+   const imagen = document.getElementById("seleccionador-de-imagen").files[0];
 
    const { error } = await supabase
       .from('eventos')
-      .update({ nombre, tipo, fecha, horario_inicio, horario_final, ciudad, direccion, organizador, cantidad_invitados, fecha_limite, precio_boleto, costo_extra, publico_privado, descripcion })
+      .update({ nombre, tipo, fecha, horario_inicio, horario_final, ciudad, direccion, organizador, cantidad_invitados, fecha_limite, precio_boleto, costo_extra, descripcion })
       .eq('id_eventos', idEvento)
 
    if (imagen) {
@@ -91,17 +84,18 @@ async function editarEvento() {
       const { data, error } = await supabase
          .storage
          .from('imagen-evento')
-         .update(nombre, imagen, {
+         .update('evento '+idEvento, imagen, {
             cacheControl: '3600',
             upsert: true
          })
    }
 
    if (error) {
-      alert('Registro evento incorrecto')
+      alert('Edicion incorrecta')
       console.log(error);
    } else {
-      alert('Registro evento correcto');
+      alert('Edicion correcta');
+      window.location.href = '/views/admin/Admin-home.html';
    }
 
 }
