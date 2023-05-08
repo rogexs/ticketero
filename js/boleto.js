@@ -27,7 +27,7 @@ var estado_boleto = data[0].estado_boleto;
 ({ data, error } = await supabase
     .storage
     .from('imagen-evento')
-    .createSignedUrl(data[0].nombre_evento, 600000))
+    .createSignedUrl("evento "+data[0].id_evento, 600000))
 
 var parrafoImagen = document.getElementById("imagenEvento");
 var parrafoNombreEvento = document.getElementById("nombreEvento");
@@ -40,14 +40,14 @@ var parrafoCiudad = document.getElementById("ciudadEvento");
 var parrafoDireccion = document.getElementById("direccionEvento");
 
 parrafoImagen.src = data.signedUrl;
-parrafoNombreEvento.textContent = nombre_evento;
-parrafoIdEvento.textContent = "ID: " + id_evento;
-parrafoTipo.textContent = "Tipo: " + tipo_evento;
-parrafoFecha.textContent = "Fecha: " + fecha_evento;
-parrafoInicio.textContent = "Horario de inicio: " + hora_inicio;
-parrafoFin.textContent = "Horario de fin: " + hora_final;
-parrafoCiudad.textContent = "Ciudad: " + ciudad;
-parrafoDireccion.textContent = "Direccion: " + direccion;
+parrafoNombreEvento.value = nombre_evento;
+parrafoIdEvento.value = id_evento;
+parrafoTipo.value = tipo_evento;
+parrafoFecha.value = fecha_evento;
+parrafoInicio.value = hora_inicio;
+parrafoFin.value = hora_final;
+parrafoCiudad.value = ciudad;
+parrafoDireccion.value = direccion;
 
 var parrafoIdComprador = document.getElementById("idComprador");
 var parrafoNombreComprador = document.getElementById("nombreComprador");
@@ -56,12 +56,12 @@ var parrafoFechaCompra = document.getElementById("fechaCompra");
 var parrafoHoraCompra = document.getElementById("horaCompra");
 var parrafoEstadoBoleto = document.getElementById("estadoBoleto");
 
-parrafoIdComprador.textContent = "ID boleto: " + id_boleto;
-parrafoNombreComprador.textContent = "Nombre del comprador: " + nombre_comprador;
-parrafoCorreo.textContent = "Correo: " + correo;
-parrafoFechaCompra.textContent = "Fecha de compra: " + fecha_compra;
-parrafoHoraCompra.textContent = "Hora de compra: " + hora_compra;
-parrafoEstadoBoleto.textContent = "Estado de boleto: " + estado_boleto;
+parrafoIdComprador.value = id_boleto;
+parrafoNombreComprador.value = nombre_comprador;
+parrafoCorreo.value = correo;
+parrafoFechaCompra.value = fecha_compra;
+parrafoHoraCompra.value = hora_compra;
+parrafoEstadoBoleto.value = estado_boleto;
 
 const btnEliminarBoleto = document.getElementById("eliminarBoleto");
 
@@ -77,6 +77,7 @@ async function eliminar() {
    if (error) {
       alert(error);
    }else{
-    window.location.href = '/comp/mis-boletos.html'
+    alert("boleto eliminado")
+    window.location.href = '/views/comprador/misBoletos.html'
    }
 }

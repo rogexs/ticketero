@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Mi boleto</title>
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="/js/boleto.js"></script>
 	<!-- Enlaza los archivos CSS de Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	  <!--Iconos de pestaña-->
@@ -85,66 +87,63 @@
 	<div class="row">
 	  <div class="col-md-6">
 
-		<img  style="width: 20rem;"  src="/assets/img/comic-con.jpg" alt="">
+		<img id="imagenEvento" style="width: 20rem;"  src="" alt="">
 
 		<div class="mb-3 row">
 				<label for="staticEvent" class="col-sm-5 col-form-label"><strong>Nombre del evento</strong></label>
 				<div class="col-sm-6">
-				<input type="text" readonly class="form-control-plaintext" id="staticEvent" value="Talent Fest">
+				<input type="text" readonly class="form-control-plaintext" id="nombreEvento" value="">
 				</div>
 		</div>
 		
 		  <div class="mb-3 row">
 			<label for="staticID" class="col-sm-5 col-form-label"><strong>ID evento:</strong></label>
 			<div class="col-sm-6">
-			  <input type="text" readonly class="form-control-plaintext" id="staticID" value="0987">
+			  <input type="text" readonly class="form-control-plaintext" id="idEvento" value="">
 			</div>
 		  </div>
 
 		  <div class="mb-3 row">
 			<label for="staticTipoEvento" class="col-sm-5 col-form-label"><strong>Tipo de evento:</strong></label>
 			<div class="col-sm-6">
-			  <input type="text" readonly class="form-control-plaintext" id="staticTipoEvento" value="Convención">
+			  <input type="text" readonly class="form-control-plaintext" id="tipoEvento" value="">
 			</div>
 		  </div>
 
 		  <div class="mb-3 row">
 			<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Fecha del evento:</strong></label>
 			<div class="col-sm-6">
-			  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="23/03/2023">
+			  <input type="text" readonly class="form-control-plaintext" id="fechaEvento" value="">
 			</div>
 		  </div>
 
 		  <div class="mb-3 row">
-			<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario del evento:</strong></label>
+			<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario de inicio del evento:</strong></label>
 			<div class="col-sm-6">
-			  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="4:00 p.m. - 6:00 p.m.">
+			  <input type="text" readonly class="form-control-plaintext" id="horarioInicioEvento" value="">
+			</div>
+		  </div>
+
+		  <div class="mb-3 row">
+			<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario de fin del evento:</strong></label>
+			<div class="col-sm-6">
+			  <input type="text" readonly class="form-control-plaintext" id="horarioFinEvento" value="">
 			</div>
 		  </div>
 
 		  <div class="mb-3 row">
 			<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Ciudad:</strong></label>
 			<div class="col-sm-6">
-			  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Coatzacoalcos">
+			  <input type="text" readonly class="form-control-plaintext" id="ciudadEvento" value="">
 			</div>
 		  </div>
 
 		  <div class="mb-3 row">
 			<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Dirección:</strong></label>
 			<div class="col-sm-6">
-			  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Av.Universidad">
+			  <input type="text" readonly class="form-control-plaintext" id="direccionEvento" value="">
 			</div>
 		  </div>
-
-		  <div class="mb-3 row">
-			<label for="staticEmail" class="col-sm-5 col-form-label"><strong>Duración:</strong></label>
-			<div class="col-sm-6">
-			  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="3 dias">
-			</div>
-		  </div>
-
-		  
-
 	  </div>
 
 	  
@@ -155,40 +154,40 @@
 			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-6 col-form-label"><strong>ID Boleto:</strong></label>
 				<div class="col-sm-4">
-				<input type="text" class="text-break" readonly class="form-control-plaintext" id="staticEmail" value="1234">
+				<input type="text" class="text-break" readonly class="form-control-plaintext" id="idComprador" value="">
 				</div>
 			</div>
 
 			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Nombre del comprador:</strong></label>
 				<div class="col-sm-4">
-				<input type="text" class="text-break" readonly class="form-control-plaintext" id="staticEmail" value="William Wilson">
+				<input type="text" class="text-break" readonly class="form-control-plaintext" id="nombreComprador" value="">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Correo electronico:</strong></label>
 				<div class="col-sm-4">
-				<input type="text" class="text-break" readonly class="form-control-plaintext" id="staticEmail" value="willie@gmail.com">
+				<input type="text" class="text-break" readonly class="form-control-plaintext" id="correo" value="">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Fecha de compra:</strong></label>
 				<div class="col-sm-4">
-				<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="24/02/2023">
+				<input type="text" readonly class="form-control-plaintext" id="fechaCompra" value="">
 				</div>
 			</div>
 
 			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Hora de compra:</strong></label>
 				<div class="col-sm-4">
-				<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="9:54 a.m">
+				<input type="text" readonly class="form-control-plaintext" id="horaCompra" value="">
 				</div>
 			</div>
 
 			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Estado del boleto:</strong></label>
 				<div class="col-sm-4">
-				<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Boleto agotado">
+				<input type="text" readonly class="form-control-plaintext" id="estadoBoleto" value="">
 				</div>
 			</div>
 	  </div>
@@ -250,10 +249,9 @@
 							<p class="text-break" style="color: gray;"><em>Esta acción es permanente y no se puede deshacer</em></p>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-								<button type="button" class="btn btn-primary" style="color: white; background-color: red; border: 2px solid #945819;">Confirmar</button>
+								<button id="eliminarBoleto" type="button" class="btn btn-primary" style="color: white; background-color: red; border: 2px solid #945819;">Confirmar</button>
 							</div>
 					</div>
-					
 				</div>
 				</div>
 			</div>
