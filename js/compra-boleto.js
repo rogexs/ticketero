@@ -22,7 +22,7 @@ var precio_evento = data[0].precio_boleto;
 ({ data, error } = await supabase
     .storage
     .from('imagen-evento')
-    .createSignedUrl(data[0].nombre, 600000))
+    .createSignedUrl('evento '+data[0].id_eventos, 600000))
 
 // Obtener una referencia al párrafo mediante su id
 var parrafoImagen = document.getElementById("imagenEvento");
@@ -115,11 +115,10 @@ async function comprarBoleto() {
         .select()
 
     if (error) {
+        console.log(error);
         alert("Error de compra")
     } else {
         alert("Compra correcta")
-        sessionStorage.setItem('idBoletoPostCompra', data[0].id_boleto);
-        sessionStorage.setItem('idEventoPostCompra', idEvento);
-        window.location.href = "/comp/post-compra.html";
+        window.location.href = "/comp/mis-boletos.html";
     }
 }

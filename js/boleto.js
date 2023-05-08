@@ -27,7 +27,7 @@ var estado_boleto = data[0].estado_boleto;
 ({ data, error } = await supabase
     .storage
     .from('imagen-evento')
-    .createSignedUrl(data[0].nombre_evento, 600000))
+    .createSignedUrl('evento '+data[0].id_evento, 600000))
 
 var parrafoImagen = document.getElementById("imagenEvento");
 var parrafoNombreEvento = document.getElementById("nombreEvento");

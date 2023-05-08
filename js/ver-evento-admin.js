@@ -35,7 +35,7 @@ if (estado == "desplegado") {
 ({ data, error } = await supabase
     .storage
     .from('imagen-evento')
-    .createSignedUrl(data[0].nombre, 600000))
+    .createSignedUrl("evento "+idEvento, 600000))
 
 // Obtener una referencia al párrafo mediante su id
 var parrafoImagen = document.getElementById("imagenEvento");

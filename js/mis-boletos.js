@@ -19,7 +19,7 @@ let limite = data[0].count;
 let nombreURL = [];
 
 for (let index = 0; index < limite; index++) {
-    nombreURL.push(data[index].nombre_evento);
+    nombreURL.push("evento " + data[index].id_evento);
 }
 
 let imgURL = [];

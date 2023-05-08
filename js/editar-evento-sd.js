@@ -23,11 +23,6 @@ var extraEvento = data[0].costo_extra;
 var publico_privado = data[0].publico_privado;
 var descripcion = data[0].descripcion;
 
-({ data, error } = await supabase
-   .storage
-   .from('imagen-evento')
-   .createSignedUrl(data[0].nombre, 600000))
-
 // Obtener una referencia al párrafo mediante su id
 const txtNombre = document.getElementById("nombre");
 const txtTipo = document.getElementById("tipo");
@@ -91,7 +86,7 @@ async function editarEvento() {
       const { data, error } = await supabase
          .storage
          .from('imagen-evento')
-         .update(nombre, imagen, {
+         .update('evento '+idEvento, imagen, {
             cacheControl: '3600',
             upsert: true
          })

@@ -11,13 +11,13 @@ let limite = data[0].count;
 
 ({ data, error } = await supabase
     .from('eventos')
-    .select('nombre')
+    .select('id_eventos')
     .eq('id_usuario_auth', user.id))
 
 let nombreURL = [];
 
 for (let index = 0; index < limite; index++) {
-    nombreURL.push(data[index].nombre);
+    nombreURL.push("evento "+data[index].id_eventos);
 }
 
 let imgURL = [];

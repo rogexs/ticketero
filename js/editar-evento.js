@@ -76,7 +76,7 @@ async function editarEvento() {
       const { data, error } = await supabase
          .storage
          .from('imagen-evento')
-         .update(nombre, imagen, {
+         .update('evento '+idEvento, imagen, {
             cacheControl: '3600',
             upsert: true
          })
