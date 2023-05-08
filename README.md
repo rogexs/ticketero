@@ -1,4 +1,4 @@
 # ticketero
 Repositorio del proyecto ticketero
--Todas las pantallas implementadas
--Lector QR implementado pero no abre la camara
+-Se corrijeron errores
+-Se descarto el uso de momento de ver-evento-comp.js

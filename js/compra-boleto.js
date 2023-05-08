@@ -16,7 +16,42 @@ var hora_inicio = data[0].horario_inicio;
 var hora_final = data[0].horario_final;
 var ciudad = data[0].ciudad;
 var direccion = data[0].direccion;
+var fechaLimite_evento = data[0].fecha_limite;
 var precio_evento = data[0].precio_boleto;
+var descripcion_evento = data[0].descripcion;
+
+({ data, error } = await supabase
+    .storage
+    .from('imagen-evento')
+    .createSignedUrl('evento '+data[0].id_eventos, 600000))
+
+// Obtener una referencia al párrafo mediante su id
+var parrafoImagen = document.getElementById("mi-imagen");
+var parrafoNombreEvento = document.getElementById("staticEvent");
+var parrafoId = document.getElementById("staticID");
+var parrafoTipo = document.getElementById("staticTipoEvento");
+var parrafoFecha = document.getElementById("staticFecha");
+var parrafoInicio = document.getElementById("staticInicio");
+var parrafoFin = document.getElementById("staticFin");
+var parrafoCiudad = document.getElementById("staticCiudad");
+var parrafoDireccion = document.getElementById("staticDireccion");
+var parrafoFechaLimite = document.getElementById("staticFechaLimite");
+var parrafoPrecio = document.getElementById("staticPrecio");
+var parrafoDescripcion = document.getElementById("descripcionEvento");
+
+// Modificar el contenido del párrafo
+parrafoImagen.src = data.signedUrl;
+parrafoNombreEvento.value = nombre_evento;
+parrafoId.value = id_evento;
+parrafoTipo.value = tipo_evento;
+parrafoFecha.value = fecha_evento;
+parrafoInicio.value = hora_inicio;
+parrafoFin.value = hora_final;
+parrafoCiudad.value = ciudad;
+parrafoDireccion.value = direccion;
+parrafoFechaLimite.value = fechaLimite_evento;
+parrafoPrecio.value = precio_evento;
+parrafoDescripcion.textContent = descripcion_evento;
 
 ({ data, error } = await supabase.auth.getSession())
 
@@ -36,7 +71,7 @@ var parrafoCorreo = document.getElementById("staticEmail");
 var parrafoCosto = document.getElementById("staticCosteBoleto");
 
 parrafoNombreComprador.value = nombre_comprador;
-parrafoCorreo.value = correo;
+parrafoCorreo.value= correo;
 parrafoCosto.value = precio_evento;
 
 var btnComprar = document.getElementById("compraBoleto");
@@ -88,6 +123,6 @@ async function comprarBoleto() {
         alert("Error de compra")
     } else {
         alert("Compra correcta")
-        window.location.href = "/comp/comprador-home.html";
+        window.location.href = "/views/comprador/misBoletos.html";
     }
 }
