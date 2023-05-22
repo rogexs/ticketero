@@ -1,12 +1,17 @@
 import { supabase } from "./conexion.js"
 
-const datoBotonBoleto = sessionStorage.getItem("datoBotonBoleto");
-const idBoleto = sessionStorage.getItem(datoBotonBoleto);
+// Obtén el valor del parámetro "id" desde la URL
+function obtenerValorIdDesdeURL() {
+    const parametros = new URLSearchParams(window.location.search);
+    return parametros.get('id');
+}
+
+const idBoleto = obtenerValorIdDesdeURL();
 
 let { data, error } = await supabase
-   .from('boletos')
-   .select()
-   .eq('id_boleto', idBoleto)
+    .from('boletos')
+    .select()
+    .eq('id_boleto', idBoleto)
 
 var nombre_evento = data[0].nombre_evento;
 var id_evento = data[0].id_evento;
@@ -25,9 +30,9 @@ var hora_compra = data[0].hora_compra;
 var estado_boleto = data[0].estado_boleto;
 
 ({ data, error } = await supabase
-   .storage
-   .from('imagen-evento')
-   .createSignedUrl("evento " + data[0].id_evento, 600000))
+    .storage
+    .from('imagen-evento')
+    .createSignedUrl("evento " + data[0].id_evento, 600000))
 
 var parrafoImagen = document.getElementById("imagenEvento");
 var parrafoNombreEvento = document.getElementById("nombreEvento");
@@ -62,25 +67,6 @@ parrafoCorreo.value = correo;
 parrafoFechaCompra.value = fecha_compra;
 parrafoHoraCompra.value = hora_compra;
 parrafoEstadoBoleto.value = estado_boleto;
-
-const btnEliminarBoleto = document.getElementById("eliminarBoleto");
-
-btnEliminarBoleto.addEventListener('click', eliminar)
-
-async function eliminar() {
-
-   let { error } = await supabase
-      .from('boletos')
-      .delete()
-      .eq('id_boleto', id_boleto)
-
-   if (error) {
-      console.log(error);
-      alert("Error de eliminar boleto");
-   } else {
-      window.location.href = '/views/comprador/misBoletos.html'
-   }
-}
 
 const boletoId = id_boleto;
 

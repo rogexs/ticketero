@@ -4,7 +4,6 @@
   <title>Página de boletos</title>
   <!--Supabase-->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
 </head>
 <body>
@@ -21,27 +20,20 @@
     qr.addData(url);
     qr.make();
 
+    // Ajusta el tamaño del código QR
+    const tamañoQR = 250; // Tamaño en píxeles
+    const tamañoModulo = Math.floor(tamañoQR / qr.getModuleCount());
+
     // Genera el código QR como una imagen en base64
-    const imagenQR = qr.createDataURL();
+    const imagenQR = qr.createDataURL(tamañoModulo);
 
     // Muestra el código QR en la página
     const qrContainer = document.getElementById('qr-container');
     const img = document.createElement('img');
     img.src = imagenQR;
+    img.width = tamañoQR;
+    img.height = tamañoQR;
     qrContainer.appendChild(img);
-
-    // Función para obtener el ID del boleto desde la URL
-    function obtenerIdBoletoDesdeURL() {
-      const parametros = new URLSearchParams(window.location.search);
-      return parametros.get('id');
-    }
-
-    // Obtén el ID del boleto escaneado y redirige a la página de información del boleto
-    const idBoletoEscaneado = obtenerIdBoletoDesdeURL();
-    if (idBoletoEscaneado) {
-      const urlInformacionBoleto = 'https://tusitio.com/informacion-boleto?id=' + idBoletoEscaneado;
-      window.location.href = urlInformacionBoleto;
-    }
   </script>
 </body>
 </html>

@@ -10,5 +10,6 @@ function obtenerValorIdDesdeURL() {
   
   // Ejemplo de uso
   const idBoleto = obtenerValorIdDesdeURL();
+  alert(idBoleto);
   console.log(idBoleto); // Imprime el valor del parámetro "id" en la consola
   

@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Mi boleto</title>
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-	<script type="module" src="/js/boleto.js"></script>
+	<script type="module" src="/js/boletoQR.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
 	<!-- Enlaza los archivos CSS de Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -205,83 +205,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!--boton Cancelar-->
-	<div class="container text-center">
-		<div class="col-md-12">
-			<button type="submit" class="btn btn-danger nokio" style="margin-top: 30px; margin-bottom: 30px;"
-				data-bs-toggle="modal" data-bs-target="#eliminarBoletoModal">Cancelar Boleto</button>
-		</div>
-	</div>
-
-	<!-- Modal Eliminar boleto -->
-	<div class="modal fade" id="eliminarBoletoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Cancelación de boleto</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-
-					<label for="radioButtom">Indique la razón por la cual desea cancelar el boleto:</label>
-
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-						<label class="form-check-label" for="flexRadioDefault1">
-							Cambio de fecha
-						</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-							checked>
-						<label class="form-check-label" for="flexRadioDefault2">
-							Cambio de ubicación
-						</label>
-					</div>
-					<p class="text-break">Si lo desea agregue una breve descripción del motivo de la cancelación</p>
-					<textarea class="form-control" id="mensaje" style="height: 200px;" required
-						placeholder="Descripción opcional..."></textarea>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-							style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-						<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-							data-bs-target="#aceptarEliminarBoletoModal"
-							style="color: white; background-color: red; border: 2px solid #945819;">Confirmar</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- Modal Aceptar cancelación -->
-	<div class="modal fade" id="aceptarEliminarBoletoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea el cancelar su boleto?
-					</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<p class="text-break" style="color: gray;"><em>Esta acción es permanente y no se puede deshacer</em>
-					</p>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-							style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-						<button id="eliminarBoleto" type="button" class="btn btn-primary"
-							style="color: white; background-color: red; border: 2px solid #945819;">Confirmar</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
 
 	<!--FOOTER-->
 	<footer class="text-center text-white" style="background-color: #f1f1f1;">
