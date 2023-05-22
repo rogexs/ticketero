@@ -1,22 +1,14 @@
 import { supabase } from "./conexion.js"
 
-const datoBoton = sessionStorage.getItem("datoBotonEvento");
+console.log("Prueba QR\n");
 
-const idEvento = sessionStorage.getItem(datoBoton);
-
-console.log(idEvento);
-
-const btnEliminarEvento = document.getElementById("eliminarImagen");
-
-btnEliminarEvento.addEventListener('click', eliminar)
-
-async function eliminar() {
-
-        let { data, error } = await supabase
-            .storage
-            .from('imagen-evento')
-            .remove('convencionPrueba')
-    
-    console.log(data);
-    console.log(error);
-}
+// Obtén el valor del parámetro "id" desde la URL
+function obtenerValorIdDesdeURL() {
+    const parametros = new URLSearchParams(window.location.search);
+    return parametros.get('id');
+  }
+  
+  // Ejemplo de uso
+  const idBoleto = obtenerValorIdDesdeURL();
+  console.log(idBoleto); // Imprime el valor del parámetro "id" en la consola
+  
