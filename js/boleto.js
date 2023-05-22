@@ -75,9 +75,9 @@ async function eliminar() {
       .eq('id_boleto', id_boleto)
 
    if (error) {
-      alert(error);
+      console.log(error);
+      alert("Error de eliminar boleto");
    }else{
-    alert("boleto eliminado")
     window.location.href = '/views/comprador/misBoletos.html'
    }
 }

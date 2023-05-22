@@ -58,10 +58,9 @@ async function registrarEvento() {
       }))
 
    if (error) {
-      alert('Registro evento incorrecto')
       console.log(error);
+      alert('Registro evento incorrecto')
    } else {
-      alert('Registro evento correcto');
       window.location.href = '/views/admin/Admin-home.html';
    }
 

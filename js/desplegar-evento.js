@@ -23,7 +23,8 @@ async function desplegar() {
       .eq('id_eventos', idEvento)
       window.location.href = '/views/admin/Admin-home.html'
    if (error) {
-      alert(error);
+      console.log(error);
+      alert("Error de despliegue")
    }
 
 }
@@ -40,7 +41,8 @@ async function eliminar() {
       .eq('id_eventos', idEvento)
 
    if (error) {
-      alert(error);
+      console.log(error);
+      alert("Error de eliminar")
    } else {
       let { data, error2 } = await supabase
          .storage

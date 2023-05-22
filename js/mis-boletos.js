@@ -65,7 +65,7 @@ for (let index = 0; index < limite; index++) {
     // Crear el título h5
     const cardTitle = document.createElement('h5');
     cardTitle.classList.add('card-title');
-    cardTitle.textContent = 'ID Boleto: '+data[0].id_boleto;
+    cardTitle.textContent = 'ID Boleto: '+data[index].id_boleto;
     cardBodyDiv.appendChild(cardTitle);
 
     // Crear la lista ul con la clase "list-group list-group-flush"
@@ -75,22 +75,22 @@ for (let index = 0; index < limite; index++) {
     // Crear los elementos de la lista li
     const nombreLi = document.createElement('li');
     nombreLi.classList.add('list-group-item');
-    nombreLi.textContent = 'Nombre: '+ data[0].nombre_evento;
+    nombreLi.textContent = 'Nombre: '+ data[index].nombre_evento;
     ul.appendChild(nombreLi);
 
     const fechaLi = document.createElement('li');
     fechaLi.classList.add('list-group-item');
-    fechaLi.textContent = 'Fecha: '+data[0].fecha_evento;
+    fechaLi.textContent = 'Fecha: '+data[index].fecha_evento;
     ul.appendChild(fechaLi);
 
     const ciudadLi = document.createElement('li');
     ciudadLi.classList.add('list-group-item');
-    ciudadLi.textContent = 'Ciudad: '+data[0].ciudad;
+    ciudadLi.textContent = 'Ciudad: '+data[index].ciudad;
     ul.appendChild(ciudadLi);
 
     const direccionLi = document.createElement('li');
     direccionLi.classList.add('list-group-item');
-    direccionLi.textContent = 'Dirección: '+data[0].direccion;
+    direccionLi.textContent = 'Dirección: '+data[index].direccion;
     ul.appendChild(direccionLi);
 
     // Agregar la lista ul al div con la clase "card-body"

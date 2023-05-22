@@ -91,10 +91,9 @@ async function editarEvento() {
    }
 
    if (error) {
-      alert('Edicion incorrecta')
       console.log(error);
+      alert('Edicion incorrecta')
    } else {
-      alert('Edicion correcta');
       window.location.href = '/views/admin/Admin-home.html';
    }
 

@@ -16,9 +16,9 @@ async function iniciarSesion() {
         
     })
      if (error) {
+        console.log(error);
         alert('Inicio de sesion incorrecto')
      }else{
-        alert('Inicio correcto');
         window.location.href = '/views/comprador/comprador-home.html';
      }
 }

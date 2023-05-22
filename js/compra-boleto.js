@@ -122,7 +122,6 @@ async function comprarBoleto() {
         console.log(error);
         alert("Error de compra")
     } else {
-        alert("Compra correcta")
         window.location.href = "/views/comprador/misBoletos.html";
     }
 }
