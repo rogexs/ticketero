@@ -6,6 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administración de eventos</title>
+  <!--Supabase-->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="/js/cerrar-sesion.js"></script>
+  <script type="module" src="/js/desplegar-evento.js"></script>
+  <script type="module" src="/js/ver-evento-admin.js"></script>
   <!-- Enlaza los archivos CSS de Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <!--Iconos de pestaña-->
@@ -32,7 +37,7 @@
     <div class="container-fluid navbar navbar1">
       <div class="container-fluid">
         <div class="navbar-brand formato-div-logo d-inline-block align-text-top">
-          <a href="/views/admin/Admin-home.html">
+          <a href="../index.html">
             <img src="/assets/img/logo-ticket.png" alt="Logo de la pagina" width="38px">
           </a>
         </div>
@@ -48,15 +53,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 menu-bar">
           <li class="nav-item">
-            <a class="nav-link" href="/views/admin/Admin-home.html">Modo Administrador</a>
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#compradorModal">Modo comprador</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/QR/qrReader.html">Escanear QR</a>
+            <a class="nav-link" href="Admin-home.html">Eventos creados</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#cerrarSesionModal">Cerrar sesión</a>
+            <a class="nav-link" href="/QR/index.html">Escanear QR</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cerrarSesionModal">Cerrar sesión</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -94,8 +101,11 @@
               aria-expanded="false">
               Opciones
             </button>
-            <ul class="dropdown-menu" style="background-color: #945819;">
+            <ul id="lista-opciones" class="dropdown-menu" style="background-color: #945819;">
               <li><a class="dropdown-item" href="/views/admin/editarEvento.html" style="color: white;">Editar evento</a>
+              </li>
+              <li><a class="dropdown-item" href="/views/admin/editarEventoDesplegado.html" style="color: white;">Editar
+                  evento</a>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -114,113 +124,106 @@
           <div class="mb-3 row">
             <label for="staticEvent" class="col-sm-5 col-form-label"><strong>Nombre del evento</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEvent" value="Talent Fest">
+              <input type="text" readonly class="form-control-plaintext" id="staticEvent" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEvent" class="col-sm-5 col-form-label"><strong>Estado:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEvent" value="Sin desplegar"
-                style="color: red;">
+              <input type="text" readonly class="form-control-plaintext" id="staticEstado" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticID" class="col-sm-5 col-form-label"><strong>ID evento:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticID" value="0987">
+              <input type="text" readonly class="form-control-plaintext" id="staticID" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticTipoEvento" class="col-sm-5 col-form-label"><strong>Tipo de evento:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticTipoEvento" value="Convención">
+              <input type="text" readonly class="form-control-plaintext" id="staticTipoEvento" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Fecha del evento:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="23/03/2023">
+              <input type="text" readonly class="form-control-plaintext" id="staticFecha" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
-            <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario del evento:</strong></label>
+            <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario de inicio del
+                evento:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="4:00 p.m. - 6:00 p.m.">
+              <input type="text" readonly class="form-control-plaintext" id="staticHorarioInicio" value="">
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Horario de fin del evento:</strong></label>
+            <div class="col-sm-6">
+              <input type="text" readonly class="form-control-plaintext" id="staticHorarioFin" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Ciudad:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Coatzacoalcos">
+              <input type="text" readonly class="form-control-plaintext" id="staticCiudad" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Dirección:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Av.Universidad">
+              <input type="text" readonly class="form-control-plaintext" id="staticDireccion" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Duración:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="3 dias">
+              <input type="text" readonly class="form-control-plaintext" id="staticDuracion" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Organizador:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Michael Talent">
+              <input type="text" readonly class="form-control-plaintext" id="staticOrganizador" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Cantidad de invitados:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="400">
+              <input type="text" readonly class="form-control-plaintext" id="staticCantidadInvitados" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Fecha limite de venta:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="26/08/2023">
+              <input type="text" readonly class="form-control-plaintext" id="staticFechaLimite" value="">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Precio del boleto:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="$200">
+              <input type="text" readonly class="form-control-plaintext" id="staticPrecio" value="$">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Costo extra FL:</strong></label>
             <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="$25">
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Visibilidad del evento:</strong></label>
-            <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Público">
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="staticEmail" class="col-sm-5 col-form-label"><strong>Tipo de evento:</strong></label>
-            <div class="col-sm-6">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Pago por evento">
+              <input type="text" readonly class="form-control-plaintext" id="staticCostoExtra" value="$">
             </div>
           </div>
 
@@ -229,7 +232,7 @@
         <div class="col-md-6">
 
           <!--Seleccionar imagen-->
-          <img class="img-fluid" src="/assets/img/comic-con.jpg" alt="">
+          <img id="imagenEvento" class="img-fluid" src="" alt="">
 
           <!--Tabla-->
           <table class="table table-hover">
@@ -302,6 +305,32 @@
     <!-- Copyright -->
   </footer>
 
+  <!-- Modal Comprador -->
+  <div class="modal fade" id="compradorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea cambiar al modo Comprador de
+            boletos?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-break" style="color: gray;"><em>Al realizar esta acción cambiara al modo Comprador de boletos y
+              ya no dispondra de
+              las caracteristicas del modo Administrador
+            </em></p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+              style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
+            <a href="/views/comprador/comprador-home.html"><button type="button" class="btn btn-primary"
+                style="color: white; background-color: red; border: 2px solid #945819;">Aceptar</button></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Modal Desplegar evento -->
   <div class="modal fade" id="desplegarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -317,7 +346,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
               style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-            <button type="button" class="btn btn-primary"
+            <button id="desplegarEvento" type="button" class="btn btn-primary"
               style="color: white; background-color: red; border: 2px solid #945819;">Confirmar</button>
           </div>
         </div>
@@ -339,7 +368,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
               style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-            <button type="button" class="btn btn-primary"
+            <button id="eliminarEvento" type="button" class="btn btn-primary"
               style="color: white; background-color: red; border: 2px solid #945819;">Confirmar</button>
           </div>
         </div>
@@ -361,8 +390,8 @@
               funciones<div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                   style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-                <a href="/index.html"><button type="button" class="btn btn-primary"
-                    style="color: white; background-color: red; border: 2px solid #945819;">Aceptar</button></a>
+                <button id="cerrarSesion" type="button" class="btn btn-primary"
+                  style="color: white; background-color: red; border: 2px solid #945819;">Aceptar</button>
               </div>
         </div>
 
