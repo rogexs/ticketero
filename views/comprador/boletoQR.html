@@ -6,11 +6,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Mi boleto</title>
+	<!--Supabase-->
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script type="module" src="/js/inicio-admin.js"></script>
+	<script type="module" src="/js/inicio-comp.js"></script>
+	<script type="module" src="/js/registro-usuario.js"></script>
 	<script type="module" src="/js/boletoQR.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
 	<!-- Enlaza los archivos CSS de Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!--Supabase-->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="/js/inicio-admin.js"></script>
+  <script type="module" src="/js/inicio-comp.js"></script>
+  <script type="module" src="/js/registro-usuario.js"></script>
 	<!--Iconos de pestaña-->
 	<link rel="icon" type="image/x-com" href="../assets/img/ticketero.jpg">
 	<!--Boostrap Iconos CSS-->
@@ -31,59 +40,51 @@
 <body>
 
 	<!--Header Nav-->
-	<nav class="navbar navbar-expand-lg bg-light">
-		<div class="container-fluid navbar navbar1">
-			<div class="container-fluid">
-				<div class="navbar-brand formato-div-logo d-inline-block align-text-top">
-					<a href="../index.html">
-						<img src="/assets/img/logo-ticket.png" alt="Logo de la pagina" width="38px">
-					</a>
-				</div>
-				<h1 class="titulo-nav"><a href="/views/comprador/comprador-home.html" class="logo">Ticketero</a></h1>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid navbar navbar1">
+      <div class="container-fluid">
+        <div class="navbar-brand formato-div-logo d-inline-block align-text-top">
+          <a href="../index.html">
+            <img src="/assets/img/logo-ticket.png" alt="Logo de la pagina" width="38px">
+          </a>
+        </div>
+        <h1 class="titulo-nav"><a href="/views/comprador/comprador-home.html" class="logo">Ticketero</a></h1>
 
-				<button class="navbar-toggler justify-content-center" type="button" data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-			</div>
+        <button class="navbar-toggler justify-content-center" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 menu-bar">
-					<li class="nav-item">
-						<a class="nav-link" href="/views/comprador/comprador-home.html">Modo comprador</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/views/comprador/misBoletos.html">Ver mis boletos</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#cerrarSesionModal">Cerrar
-							sesión</a>
-					</li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 menu-bar">
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#administradorModal">Log-in
+              Administrador</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#compradorModal">Log-in Comprador</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/views/comprador/misBoletos.html" data-bs-toggle="modal"
+              data-bs-target="#registrarseModal">Crear Cuenta</a>
+          </li>
 
-				</ul>
-			</div>
-		</div>
-	</nav>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 	<!--Titulo-->
 	<div class="container text-center nokio titulo">
 		<div class="row">
 			<div class="col">
-				MI BOLETO
+				BOLETO QR
 			</div>
 		</div>
 	</div>
-
-	<!--Regresar-->
-	<div class="container text-center">
-		<div class="col-md-12">
-			<a href="/views/comprador/misBoletos.html"><button type="submit" class="btn btn-primary nokio"
-					style="margin-top: 30px;">Regresar</button></a>
-		</div>
-	</div>
-
-
 
 
 	<!--Formulario-->
@@ -242,75 +243,91 @@
 
 
 
-	<!-- Modal asistir a evento -->
-	<div class="modal fade" id="asistirEventoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea comprar un boleto para este evento?</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<p style="font-size: 20px;"><strong>Datos del comprador:</strong></p>
-					<div class="mb-3 row">
-						<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Nombre del
-								comprador:</strong></label>
-						<div class="col-sm-4">
-							<input type="text" class="text-break" readonly class="form-control-plaintext"
-								id="staticEmail" value="William Wilson">
-						</div>
-					</div>
-					<div class="mb-3 row">
-						<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Correo
-								electronico:</strong></label>
-						<div class="col-sm-4">
-							<input type="text" class="text-break" readonly class="form-control-plaintext"
-								id="staticEmail" value="willie@gmail.com">
-						</div>
-					</div>
-					<div class="mb-3 row">
-						<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Costo del
-								boleto:</strong></label>
-						<div class="col-sm-4">
-							<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="$200">
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-							style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-						<a type="button" class="btn btn-primary" href="/views/comprador/miBoleto.html"
-							style="color: white; background-color: red; border: 2px solid #945819;">Comprar Boleto</a>
-					</div>
-				</div>
+	<!-- Modal administrador -->
+  <div class="modal fade" id="administradorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Login Administrador</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
-			</div>
-		</div>
-	</div>
+        <div class="modal-body">
 
-	<!-- Modal Cerrar sesion -->
-	<div class="modal fade" id="cerrarSesionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea Cerrar Sesión?</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<p class="text-break" style="color: gray;"><em>Al realizar esta acción perdera acceso al sistema y a
-							todas sus funciones<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-									style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
-								<a href="/views/general/home.html"><button type="button" class="btn btn-primary"
-										style="color: white; background-color: red; border: 2px solid #945819;">Aceptar</button></a>
-							</div>
-				</div>
+          <div id="administrador-form">
+            <label for="email">Email:</label>
+            <input id="correo-admin" type="email" class="form-control mb-3" placeholder="Email" required>
 
-			</div>
-		</div>
-	</div>
+            <label for="password">Password:</label>
+            <input id="contra-admin" type="password" class="form-control mb-3" placeholder="*******" required>
+            <button id="iniciar-admin" type="submit" class="btn btn-primary">
+              Login
+            </button>
+            <a href="/views/general/recuperar-contra.html">¿Olvidaste tu contraseña?</a>
+          </div>
+        </div>
 
+      </div>
+    </div>
+  </div>
 
+  <!-- Modal comprador -->
+  <div class="modal fade" id="compradorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Login Comprador</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div id="comprador-form">
+            <label for="email">Email:</label>
+            <input id="correo-comp" type="email" class="form-control mb-3" placeholder="Email" required>
+
+            <label for="password">Password:</label>
+            <input id="contra-comp" type="password" class="form-control mb-3" placeholder="*******" required>
+            <button id="iniciar-comp" type="submit" class="btn btn-primary">
+              Login
+            </button>
+            <a href="/views/general/recuperar-contra.html">¿Olvidaste tu contraseña? (No implementado)</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal registrarse -->
+  <div class="modal fade" id="registrarseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Registrarse</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div id="signup-form">
+            <label for="email">Email:</label>
+            <input type="email" id="signup-email" class="form-control mb-3" placeholder="Email" required>
+            <label for="name">Nombre:</label>
+            <input type="text" id="signup-name" class="form-control mb-3" placeholder="Nombre" required>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="signup-apellido" class="form-control mb-3" placeholder="Apellido" required>
+            <label for="password">Password:</label>
+            <input type="password" id="signup-password" class="form-control mb-3" placeholder="*******" required>
+            <label for="password">Confirmar Password:</label>
+            <input type="password" id="con-password" class="form-control mb-3" placeholder="*******" required>
+            <button type="submit" class="btn btn-primary" id="enviar-boton">
+              Aceptar
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 	<!--Boostrap:JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
