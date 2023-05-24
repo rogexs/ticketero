@@ -5,9 +5,9 @@ const datoBoton = sessionStorage.getItem("datoBotonEvento");
 const idEvento = sessionStorage.getItem(datoBoton);
 
 let { data, error } = await supabase
-      .from('eventos')
-      .select('nombre')
-      .eq('id_eventos', idEvento)
+   .from('eventos')
+   .select('nombre')
+   .eq('id_eventos', idEvento)
 
 let nombreImg = data[0].nombre;
 
@@ -21,7 +21,7 @@ async function desplegar() {
       .from('eventos')
       .update({ estado: 'desplegado' })
       .eq('id_eventos', idEvento)
-      window.location.href = '/views/admin/Admin-home.html'
+   window.location.href = '/views/admin/Admin-home.html'
    if (error) {
       console.log(error);
       alert("Error de despliegue")
@@ -29,25 +29,60 @@ async function desplegar() {
 
 }
 
+({ data, error } = await supabase
+   .from('boletos')
+   .select(`count`)
+   .eq('id_evento', idEvento))
+
+let conteoBoletos = data[0].count;
+
 const btnEliminarEvento = document.getElementById("eliminarEvento");
 
 btnEliminarEvento.addEventListener('click', eliminar)
 
 async function eliminar() {
 
-   let { error } = await supabase
-      .from('eventos')
-      .delete()
-      .eq('id_eventos', idEvento)
+   if (conteoBoletos > 0) {
+      let { error } = await supabase
+         .from('boletos')
+         .delete()
+         .eq('id_evento', idEvento)
 
-   if (error) {
-      console.log(error);
-      alert("Error de eliminar")
-   } else {
-      let { data, error2 } = await supabase
-         .storage
-         .from('imagen-evento')
-         .remove(nombreImg)
+      let { error2 } = await supabase
+            .from('eventos')
+            .delete()
+            .eq('id_eventos', idEvento)
+
+
+      if (error) {
+         console.log(error);
+         console.log(error.code);
+         alert("Error de eliminar")
+      } else {
+         let { data, error2 } = await supabase
+            .storage
+            .from('imagen-evento')
+            .remove(nombreImg)
          window.location.href = '/views/admin/Admin-home.html';
+      }
+
+   } else {
+      let { error } = await supabase
+         .from('eventos')
+         .delete()
+         .eq('id_eventos', idEvento)
+
+      if (error) {
+         console.log(error);
+         console.log(error.code);
+         alert("Error de eliminar")
+      } else {
+         let { data, error2 } = await supabase
+            .storage
+            .from('imagen-evento')
+            .remove(nombreImg)
+         window.location.href = '/views/admin/Admin-home.html';
+      }
    }
+
 }

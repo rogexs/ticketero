@@ -8,6 +8,8 @@ function obtenerValorIdDesdeURL() {
 
 const idBoleto = obtenerValorIdDesdeURL();
 
+var btnConfirmar = document.getElementById("btnConfirmar");
+
 let { data, error } = await supabase
     .from('boletos')
     .select()
@@ -27,7 +29,7 @@ var nombre_comprador = data[0].nombre_comprador;
 var correo = data[0].correo;
 var fecha_compra = data[0].fecha_compra;
 var hora_compra = data[0].hora_compra;
-var estado_boleto = data[0].estado_boleto;
+var estado_boleto = data[0].asistencia;
 
 ({ data, error } = await supabase
     .storage
@@ -59,7 +61,7 @@ var parrafoNombreComprador = document.getElementById("nombreComprador");
 var parrafoCorreo = document.getElementById("correo");
 var parrafoFechaCompra = document.getElementById("fechaCompra");
 var parrafoHoraCompra = document.getElementById("horaCompra");
-var parrafoEstadoBoleto = document.getElementById("estadoBoleto");
+var parrafoEstadoBoleto = document.getElementById("asistenciaBoleto");
 
 parrafoIdComprador.value = id_boleto;
 parrafoNombreComprador.value = nombre_comprador;
@@ -67,6 +69,24 @@ parrafoCorreo.value = correo;
 parrafoFechaCompra.value = fecha_compra;
 parrafoHoraCompra.value = hora_compra;
 parrafoEstadoBoleto.value = estado_boleto;
+
+const { data: { user } } = await supabase.auth.getUser()
+
+var id_usuario = user.id;
+
+({ data, error } = await supabase
+    .from('eventos')
+    .select()
+    .eq('id_eventos', id_evento))
+
+var id_usuario_evento = data[0].id_usuario_auth;
+
+if (id_usuario == id_usuario_evento) {
+    btnConfirmar.style.display = "block";
+}
+if (estado_boleto == "Confirmado") {
+    btnConfirmar.style.display = "none";
+}
 
 const boletoId = id_boleto;
 
@@ -92,3 +112,21 @@ img.src = imagenQR;
 img.width = tamañoQR;
 img.height = tamañoQR;
 qrContainer.appendChild(img);
+
+const btnCerrar = document.getElementById("btnAsistencia");
+
+btnCerrar.addEventListener('click', confirmarAsistencia)
+
+async function confirmarAsistencia() {
+
+    const { error } = await supabase
+        .from('boletos')
+        .update({ asistencia: 'Confirmado' })
+        .eq('id_boleto', idBoleto)
+    if (error) {
+        console.log(error);
+        alert('confirmacion error')
+    } else {
+        location.reload();
+    }
+}

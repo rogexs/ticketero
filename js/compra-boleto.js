@@ -115,7 +115,8 @@ async function comprarBoleto() {
             hora_inicio,
             hora_final,
             ciudad,
-            direccion
+            direccion,
+            id_auth
         })
 
     if (error) {

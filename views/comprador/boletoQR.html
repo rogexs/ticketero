@@ -198,13 +198,42 @@
 				</div>
 
 				<div class="mb-3 row">
-					<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Estado del boleto:</strong></label>
+					<label for="staticEmail" class="col-sm-6 col-form-label"><strong>Asistencia del boleto:</strong></label>
 					<div class="col-sm-4">
-						<input type="text" readonly class="form-control-plaintext" id="estadoBoleto" value="">
+						<input type="text" readonly class="form-control-plaintext" id="asistenciaBoleto" value="">
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!--boton Cancelar-->
+	<div id="btnConfirmar" class="container text-center" style="display: none;">
+		<div class="col-md-12">
+			<button type="submit" class="btn btn-danger nokio" style="margin-top: 30px; margin-bottom: 30px; background-color: #3E47DE; border: #3E47DE;"
+				data-bs-toggle="modal" data-bs-target="#eliminarBoletoModal">Confirmar Boleto</button>
+		</div>
+	</div>
+
+	<!-- Modal Confirmar Boleto -->
+	<div class="modal fade" id="eliminarBoletoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea confirmar asistencia del boleto?</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			  </div>
+			  <div class="modal-body">
+				<p class="text-break" style="color: gray;"><em>Al realizar esta acción perdera acceso al sistema y a todas sus funciones<div class="modal-footer">
+					  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+						style="border: 2px solid #945819; background-color: #F5F7FA; color: black;">Cancelar</button>
+					  <button id="btnAsistencia" type="button" class="btn btn-primary"
+						style="color: white; background-color: #3E47DE; border: 2px solid #3E47DE;">Aceptar</button>
+					</div>
+			  </div>
+	  
+			</div>
+		  </div>
 	</div>
 
 	<!--FOOTER-->

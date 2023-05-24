@@ -70,3 +70,45 @@ parrafoCantidad.value = cantidadInvitados;
 parrafoFechaLimite.value = fechaLimite;
 parrafoPrecio.value = precio;
 parrafoExtraEvento.value = extraEvento;
+
+({ data, error } = await supabase
+  .from('boletos')
+  .select(`count`)
+  .eq('id_evento', idEvento))
+
+let limite = data[0].count;
+
+({ data, error } = await supabase
+  .from('boletos')
+  .select()
+  .eq('id_evento', idEvento))
+
+for (let index = 0; index < limite; index++) {
+  // Obtener la referencia al elemento tbody
+const tbody = document.getElementById('contenido-tabla');
+
+// Crear el primer elemento tr
+const tr1 = document.createElement('tr');
+
+// Crear el elemento th con el id "idNum" y el atributo scope
+const th1 = document.createElement('th');
+th1.id = 'idNum';
+th1.setAttribute('scope', 'row');
+th1.textContent = data[0].id_boleto;
+tr1.appendChild(th1);
+
+// Crear el elemento td con el id "nombre"
+const td1 = document.createElement('td');
+td1.id = 'nombre';
+td1.textContent = data[0].nombre_comprador;
+tr1.appendChild(td1);
+
+// Crear el elemento td con el id "asistencia"
+const td2 = document.createElement('td');
+td2.id = 'asistencia';
+td2.textContent = data[0].asistencia;
+tr1.appendChild(td2);
+
+// Agregar el primer tr al tbody
+tbody.appendChild(tr1);
+}

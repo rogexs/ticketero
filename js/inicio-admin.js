@@ -19,6 +19,6 @@ async function iniciarSesion() {
         console.log(error);
         alert('Inicio de sesion incorrecto')
      }else{
-        window.location.href = '/views/admin/Admin-home.html';
+        window.location.href = '/views/admin/admin-home.html';
      }
 }
