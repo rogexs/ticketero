@@ -91,7 +91,7 @@ if (estado_boleto == "Confirmado") {
 const boletoId = id_boleto;
 
 // Crea la URL de la página de información del boleto
-const url = 'http://127.0.0.1:5502/views/comprador/boletoQR.html?id=' + boletoId;
+const url = 'http://ticketerouv.000webhostapp.com/views/comprador/boletoQR.html?id=' + boletoId;
 
 // Crea el objeto QRCode con la URL del boleto
 const qr = qrcode(0, 'L');

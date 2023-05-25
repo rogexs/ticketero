@@ -132,7 +132,7 @@ body {
     background-color: #DF923A;
     border: 2px solid #945819;
     color: white;
-    margin-bottom: 20px;
+    
 }
 
 .card-img-height .card-img-top {
@@ -151,5 +151,8 @@ body {
 
   .card {
     margin: 40px;
+    
   }
+
+  
   

@@ -96,7 +96,7 @@ for (let index = 0; index < limite; index++) {
 
     // Crear el enlace a con la clase "btn btn-primary" y el id "evento"
     const a = document.createElement('a');
-    a.href = '/views/admin/administrarEvento.html';
+    a.href = "https://ticketerouv.000webhostapp.com/views/admin/AdministrarEvento.html";
     a.classList.add('btn', 'btn-primary');
     a.id = 'evento '+ index;
     a.textContent = 'Ver Evento';
